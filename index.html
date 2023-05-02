@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Owl Stylesheets -->
+  <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+
   <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/global.css">
@@ -77,6 +81,32 @@
           </div>
         </div>
       </div>
+      <div class="owl-carousel">
+        <div class="item">
+          <div class="position-relative">
+            <div class="left-sec">
+              <img src="assets/images/about-slider.png" class="img-fluid">
+            </div>
+              <div class="right-sec">
+                <p class="title">From start to end, 
+                  experienced & dedicated staff</p>
+                <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
+              </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="position-relative">
+            <div class="left-sec">
+              <img src="assets/images/about-slider.png" class="img-fluid">
+            </div>
+              <div class="right-sec">
+                <p class="title">From start to end, 
+                  experienced & dedicated staff</p>
+                <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
+              </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -84,7 +114,25 @@
 
   <script src="./assets/js/jquery.js"></script>
   <script src="./assets/js/bootstrap.bundle.js"></script>
+  <script src="assets/owlcarousel/owl.carousel.js"></script>
+
   <script>
+    $(document).ready(function(){
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    padding:40,
+    nav:true,
+    responsive:{
+      0:{
+        items:1
+      },
+      700:{
+        items:2
+      }
+    }
+  });
+});
     $("#test").on("click", function (e) {
       e.preventDefault();
       alert("hiii")

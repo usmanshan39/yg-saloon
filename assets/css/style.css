@@ -79,6 +79,29 @@
 /* index page header end */
 
 
+/* index about us setion start */
+
+/* .owl-item{
+    padding-right: 40px !important;
+} */
+.left-sec{
+    width: 70%;
+}
+.right-sec{
+    position: absolute;
+    top: 0;
+    width: 55%;
+    background-color: #F1CE66;
+    padding: 10px;
+    right: 21px;
+    bottom: 0;
+    height: fit-content;
+    margin: auto;
+}
+
+/* index abour us section end */
+
+
 
 /* media queries */
 
