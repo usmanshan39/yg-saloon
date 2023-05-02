@@ -22,7 +22,7 @@
     padding: 0px 20px;
 }
 
-.btn-appointment {
+.btn-appointment-header {
     background-color: #F1CE66;
     color: #0D0007;
     border-bottom: 3px solid #D94E73;
@@ -62,14 +62,29 @@
     font-size: 13vw;
 }
 
+.appoint-btn-2 {
+    position: absolute;
+    bottom: 5%;
+    right: 0;
+    color: #fff;
+    left: 0;
+    border: 1px solid #fff;
+    width: fit-content;
+    margin: auto;
+    padding: 18px 30px 18px 30px;
+    border-radius: 50%;
+    font-size: 1.5vw;
+}
+
 /* index page header end */
 
 
 
 /* media queries */
 
-@media (max-width:500px){
-    .index-header .navbar-collapse{
+
+@media (max-width:500px) {
+    .index-header .navbar-collapse {
         background-color: #000;
         padding: 12px;
         border-radius: 7px;
@@ -77,5 +92,12 @@
         -moz-border-radius: 7px;
         -ms-border-radius: 7px;
         -o-border-radius: 7px;
+    }
 }
+
+@media (max-width:768px){
+    .appoint-btn-2{
+        padding: 10px 22px 10px 22px;
+        font-size: 2vw;
+    }
 }
