@@ -2,31 +2,73 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y-G Saloon</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Y-G Saloon</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <div class="p-5 bg-success">
-            <h1>Start</h1>
-            <button class="btn btn-success" id="test">test</button>
-        </div>
-    </div>
+  <!-- header start -->
 
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/bootstrap.bundle.js"></script>
-    <script>
-        $("#test").on("click" , function(e){
-            e.preventDefault();
-            alert("hiii")
-        })
-    </script>
+  <header class="index-header">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="./assets/images/logo.png" class="img-fluid header-logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- <span class="navbar-toggler-icon"></span> -->
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Portfolio</a>
+            </li>
+          </ul>
+          <div class="d-flex align-items-center justify-content-between flex-wrap">
+            <p class="text-white text-center me-3 me-xl-5 mb-0">+971 0522381623 / 624 / 625<br>Prime Tower – Office #
+              3101, Dubai</p>
+            <a class="btn btn-appointment">Appointment</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="main-sec">
+      <img src="assets/images/header-bg.png" class="img-fluid">
+      <div class="text-part">
+        <p class="m-0">We serve with</p>
+        <h1 class="m-0">Integrity</h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- header end -->
+
+
+
+  <script src="./assets/js/jquery.js"></script>
+  <script src="./assets/js/bootstrap.bundle.js"></script>
+  <script>
+    $("#test").on("click", function (e) {
+      e.preventDefault();
+      alert("hiii")
+    })
+  </script>
 </body>
 
 </html>

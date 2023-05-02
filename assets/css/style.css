@@ -1,0 +1,65 @@
+/* index page header start */
+.index-header {
+    position: relative;
+}
+
+.header-logo {
+    width: 75%;
+}
+
+.index-header .navbar {
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+}
+
+.index-header .navbar .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    font-size: 20px;
+    padding: 0px 20px;
+}
+
+.btn-appointment {
+    background-color: #F1CE66;
+    color: #0D0007;
+    border-bottom: 3px solid #D94E73;
+}
+
+.index-header .navbar-toggler {
+    color: #fff;
+    border-color: #fff !important;
+}
+
+.fa-bars {
+    color: #fff;
+}
+
+.index-header .main-sec {
+    position: relative;
+}
+
+.index-header .main-sec .text-part {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+.index-header .main-sec .text-part p {
+    font-size: 3vw;
+    color: #fff;
+}
+
+.index-header .main-sec .text-part h1 {
+    color: #F1CE66;
+    font-size: 13vw;
+}
+
+/* index page header end */
