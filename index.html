@@ -70,40 +70,29 @@
 
   <!-- index about us section -->
 
-  <section class="index-about-us m-stop">
+  <section class="index-about-us m-sec-top">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
           <p class="small-heading1">ABOUT US</p>
-          <p class="main-heading1">Let Us Give a Shine to Your Style</p>
+          <p class="main-heading42">Let Us Give a Shine to Your Style</p>
           <div class="col-11 col-md-7 m-auto">
-            <p>We welcome you on Y&G Salon to add style to your beauty. A transformation yet tranquil environment will be more comfortable and suitable for your well-being.</p>
+            <p>We welcome you on Y&G Salon to add style to your beauty. A transformation yet tranquil environment will
+              be more comfortable and suitable for your well-being.</p>
           </div>
         </div>
       </div>
-      <div class="owl-carousel">
-        <div class="item">
-          <div class="position-relative">
-            <div class="left-sec">
-              <img src="assets/images/about-slider.png" class="img-fluid">
-            </div>
-              <div class="right-sec">
-                <p class="title">From start to end, 
-                  experienced & dedicated staff</p>
-                <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
-              </div>
+      <div class="col-12 col-xl-10 mt-2">
+        <div class="row main-sec">
+          <div class="col-12 col-md-7 left-sec">
+            <img src="assets/images/about-slider.png" class="img-fluid">
           </div>
-        </div>
-        <div class="item">
-          <div class="position-relative">
-            <div class="left-sec">
-              <img src="assets/images/about-slider.png" class="img-fluid">
-            </div>
-              <div class="right-sec">
-                <p class="title">From start to end, 
-                  experienced & dedicated staff</p>
-                <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
-              </div>
+          <div class="col-12 col-md-7 col-lg-5 right-sec">
+            <p class="main-heading32">From start to end,
+              experienced & dedicated staff</p>
+            <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty
+              sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can
+              opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
           </div>
         </div>
       </div>
@@ -112,32 +101,142 @@
 
   <!-- index about us section -->
 
+
+  <!-- secret section start -->
+
+  <section class="index-secret m-sec-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-6">
+          <div id="comparison">
+            <figure>
+              <div id="handle"></div>
+              <div id="divisor"></div>
+            </figure>
+            <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+          <div class="p-4">
+            <p class="small-heading1">Our Secret</p>
+            <p class="main-heading42">Y&G Salon</p>
+            <p>With us, you will notice the difference since we use modern technology, organic products, and all safety
+              measures essential for your well-being. Therefore, we can do our job seriously and prefer to provide 100%
+              satisfaction on our Salon Dubai. No doubt, our professional team will make you happy with your new looks
+              since they know the latest trends. We use the sanitized and disinfectant tools and organic products. You
+              can access our Salon in Dubai for all grooming services such as skin care, nail care, hair care, and body
+              care since we take care of you much better.</p>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <p><img src="assets/images/lipstic-logo.png" class="sec-logo"><span class="ps-3">Beauty Therapy</span></p>
+            </div>
+            <div class="col-md-6">
+              <p><img src="assets/images/dual-hands.png" class="sec-logo"><span class="ps-3">Beauty Therapy</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- secret section end -->
+
+
+  <!-- section experience start -->
+
+
+  <section class="index-exp m-sec-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="small-heading1">Pedicure - Manicure - Waxing - Massage
+            Hair Cut - Eyelashes</p>
+          <p class="main-heading42">Let us Make Your Experience 
+            Memorable</p>
+            <p>Are you thinking of grooming yourself? It is a great idea. You must go for a gorgeous makeover or other. Enjoy all grooming services under one roof of Salon in UAE such as eyelashes, haircut, massage, manicure, pedicure and styling. So, this is the time to go for advanced booking for your new style. Advanced booking does not mean that you are going to take an appointment after two or three days at our Salon Dubai. You need to book for 45 minutes before only. We are here for.</p>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- section experience end -->
+
+
+
   <script src="./assets/js/jquery.js"></script>
   <script src="./assets/js/bootstrap.bundle.js"></script>
   <script src="assets/owlcarousel/owl.carousel.js"></script>
-
   <script>
-    $(document).ready(function(){
-  $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    padding:40,
-    nav:true,
-    responsive:{
-      0:{
-        items:1
-      },
-      700:{
-        items:2
-      }
+    var divisor = document.getElementById("divisor"),
+      handle = document.getElementById("handle"),
+      slider = document.getElementById("slider");
+
+    function moveDivisor() {
+      handle.style.left = slider.value + "%";
+      divisor.style.width = slider.value + "%";
     }
-  });
-});
-    $("#test").on("click", function (e) {
-      e.preventDefault();
-      alert("hiii")
-    })
+
+    window.onload = function () {
+      moveDivisor();
+    };
   </script>
+
 </body>
 
 </html>
+
+
+
+<!-- <div class="owl-carousel">
+  <div class="item">
+    <div class="position-relative">
+      <div class="left-sec">
+        <img src="assets/images/about-slider.png" class="img-fluid">
+      </div>
+        <div class="right-sec">
+          <p class="title">From start to end, 
+            experienced & dedicated staff</p>
+          <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
+        </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="position-relative">
+      <div class="left-sec">
+        <img src="assets/images/about-slider.png" class="img-fluid">
+      </div>
+        <div class="right-sec">
+          <p class="title">From start to end, 
+            experienced & dedicated staff</p>
+          <p>We ensures your hygiene and health safety first. We are here to unlock the door to charming beauty sanctuary and unwind the clock of modern life. So, choose your dream service on Dubai Salon since you can opt for stylish styling, spectacular look, incredible grooming, make over, and treatments</p>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function(){
+$('.owl-carousel').owlCarousel({
+  loop:true,
+  margin:10,
+  padding:40,
+  nav:true,
+  responsive:{
+    0:{
+      items:1
+    },
+    700:{
+      items:2
+    }
+  }
+});
+});
+  $("#test").on("click", function (e) {
+    e.preventDefault();
+    alert("hiii")
+  })
+</script> -->

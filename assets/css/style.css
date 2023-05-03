@@ -80,26 +80,181 @@
 
 
 /* index about us setion start */
-
-/* .owl-item{
-    padding-right: 40px !important;
-} */
-.left-sec{
-    width: 70%;
+.index-about-us {
+    position: relative;
 }
-.right-sec{
+
+.index-about-us .main-sec {
+    position: relative;
+}
+
+.index-about-us .main-sec .right-sec {
+    background: #F1CE66;
+    color: #fff;
     position: absolute;
+    right: 12%;
     top: 0;
-    width: 55%;
-    background-color: #F1CE66;
-    padding: 10px;
-    right: 21px;
     bottom: 0;
     height: fit-content;
     margin: auto;
+    padding: 30px;
 }
 
 /* index abour us section end */
+
+/* index-secret section start */
+.index-secret {
+    background-image: url('../images/secret-bg.png');
+    padding: 5% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.index-secret #comparison {
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.index-secret figure {
+    position: absolute;
+    background-image: url('../images/secret-slider.png');
+    background-size: cover;
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.index-secret #divisor {
+    background-image: url('../images/secret-slider.png');
+    background-size: cover;
+    position: absolute;
+    width: 50%;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+    bottom: 0;
+    height: 100%;
+}
+
+.index-secret #divisor::before,
+.index-secret #divisor::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    width: 4px;
+    height: calc(50% - 25px);
+    background: white;
+    z-index: 3;
+}
+
+.index-secret #divisor::before {
+    top: 0;
+    box-shadow: 0 -3px 8px 1px rgba(0, 0, 0, .3);
+}
+
+.index-secret #divisor::after {
+    bottom: 0;
+    box-shadow: 0 3px 8px 1px rgba(0, 0, 0, .3);
+}
+
+.index-secret #handle {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 1;
+}
+
+.index-secret #handle::before,
+.index-secret #handle::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 6px inset transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+}
+
+.index-secret #handle::before {
+    border-right: 6px solid white;
+    left: 50%;
+    margin-left: -17px;
+}
+
+.index-secret #handle::after {
+    border-left: 6px solid white;
+    right: 50%;
+    margin-right: -17px;
+}
+
+.index-secret input[type=range] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    width: calc(100% + 50px);
+    z-index: 2;
+}
+
+.index-secret input[type=range]:focus,
+.index-secret input[type=range]:active {
+    border: none;
+    outline: none;
+}
+
+.index-secret input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background: transparent;
+    border: 4px solid white;
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, .3);
+}
+
+.index-secret input[type=range]::-moz-range-track {
+    -moz-appearance: none;
+    height: 15px;
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+    outline: none;
+}
+
+.index-secret .small-heading1,
+.index-secret p,
+.index-secret span {
+    color: #fff;
+    line-height: 30px;
+}
+
+.index-secret .main-heading42 {
+    color: #BF7D2C;
+}
+
+.index-secret .sec-logo {
+    width: 90px;
+}
+
+
+
+/* index-secret end */
+
+
+/* section index-exp start */
+
+
+
+/* section index-exp start */
 
 
 
@@ -118,9 +273,26 @@
     }
 }
 
-@media (max-width:768px){
-    .appoint-btn-2{
+@media (max-width:768px) {
+    .appoint-btn-2 {
         padding: 10px 22px 10px 22px;
         font-size: 2vw;
+    }
+
+    .index-about-us .main-sec .left-sec {
+        padding: 0 !important;
+    }
+
+    .index-about-us .main-sec .right-sec {
+        padding: 15px;
+        right: 0;
+        position: inherit;
+    }
+}
+
+@media (min-width:768px) AND (max-width:990px) {
+    .index-about-us .main-sec .right-sec {
+        padding: 15px;
+        right: 0;
     }
 }

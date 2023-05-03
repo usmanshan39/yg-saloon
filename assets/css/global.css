@@ -1,12 +1,20 @@
 *{
     color: #0D0D0D;;
 }
-.m-stop{
+p, span{
+    font-size: 20px;
+}
+.m-sec-top{
     margin-top: 100px;
 }
-.main-heading1{
+.main-heading42{
     color: #BF7D2C;
     font-size: 40px;
+    font-family: 'El Messiri', sans-serif;
+}
+.main-heading32{
+    color: #BF7D2C;
+    font-size: 26px;
     font-family: 'El Messiri', sans-serif;
 }
 .el-font{
@@ -14,4 +22,12 @@
 }
 .small-heading1{
     color: #0D0D0D;
+}
+
+/* media queries */
+
+@media (min-width:1400px){
+    .main-heading32{
+        font-size: 31px;
+    }
 }
