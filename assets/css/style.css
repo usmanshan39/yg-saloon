@@ -251,20 +251,23 @@
 
 
 /* section index-exp start */
-.index-exp .checks .check-link{
+.index-exp .checks .check-link {
     text-decoration: none;
-    color:#1C4859;
+    color: #1C4859;
     display: flex;
     align-items: center;
 }
-.index-exp .checks .check-logo{
+
+.index-exp .checks .check-logo {
     width: 30px;
 }
-.index-exp .checks .check-link span{
-    color:#1C4859;
+
+.index-exp .checks .check-link span {
+    color: #1C4859;
     padding-left: 10px;
 }
-.index-exp .bg-yellow{
+
+.index-exp .bg-yellow {
     background-color: #F1CE66;
     padding: 3.5vw;
 }
@@ -272,7 +275,29 @@
 
 /* section index-exp start */
 
+/* section index-contact start */
+.index-contact{
+    background-image: url('../images/index-con.png');
+    padding: 7% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.index-contact .small-heading1{
+    color: #fff;
+}
+.index-contact .small-heading42{
+    color:#F1CE66;
+}
+.contact-btn{
+    background-color: #F1CE66;
+    color: #0D0D0D;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+}
 
+/* section index-contact end */
 
 /* media queries */
 
