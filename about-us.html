@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y-G Saloon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
+</head>
+
+<body>
+
+    <header class="about-us">
+        <nav class="global-navbar navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="" href="#"><img src="./assets/images/logo-black.png" class="img-fluid header-logo"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Portfolio</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center justify-content-between flex-wrap">
+                        <p class="text-center me-3 me-xl-5 mb-0">+971 0522381623 / 624 / 625<br>Prime Tower –
+                            Office #
+                            3101, Dubai</p>
+                        <a class="btn btn-appointment-header">Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="about-banner">
+            <div class="col-md-8 m-auto">
+                <p class="small-heading1 text-white">HOME / ABOUT US</p>
+                <h1 class="main-heading42">about us</h1>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="about-sec1 m-sec-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="small-heading1">welcome</p>
+                    <h1 class="main-heading42">About Us</h1>
+                    <p>Since we established the standards for beauty services, Y&G Salon has become a major star in the
+                        UAE. We are proud of our diverse and passionate expert staff that is always ready to assist you.
+                        Our team is dedicated to making our clients happy with our beauty services, makeup, and other
+                        offerings. We created a passion culture and provided the best customer satisfaction and journey
+                        possible. You will appreciate our services because we will leave you looking and feeling
+                        amazing!</p>
+                </div>
+                <div class="col-md-12 img-sec mt-5">
+                    <img src="assets/images/about2.png" class="img-fluid">
+                    <div class="text-block">
+                        <p class="m-0">This is the time to contact us for a safe and unique experience for children,
+                            women, and men. We make your experience memorable while ensuring your safety by offering
+                            halal, cruelty-free, vegan, organic, and high-quality products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="about-sec2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1 class="main-heading42">What Qualifies Us as Elite?</h1>
+                    <p>We believe in beauty by inspiring, learning, creating, and delivering it. Y&G Salon has become synonymous with the luxurious client journey, with chic décor and interiors that highlight fun elements, nature’s finest, and attentive, happy staff. We are always concerned with your comfort and relaxation. Because we care about you, our primary goal is to achieve complete satisfaction. Because we care about your beauty, nails, and hair, we only hire highly trained professionals. All treatments are delivered by international experts and trained staff. As a result, we guarantee that your time in the salon will be memorable. We are also readily accessible to provide home or office services wherever you are we are.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="assets/images/about-sec2.png" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/owlcarousel/owl.carousel.js"></script>
+    <script>
+        var divisor = document.getElementById("divisor"),
+            handle = document.getElementById("handle"),
+            slider = document.getElementById("slider");
+
+        function moveDivisor() {
+            handle.style.left = slider.value + "%";
+            divisor.style.width = slider.value + "%";
+        }
+
+        window.onload = function () {
+            moveDivisor();
+        };
+    </script>
+
+</body>
+
+</html>

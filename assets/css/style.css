@@ -14,6 +14,7 @@
     right: 0;
     left: 0;
     width: 100%;
+    padding: 10px 20px;
 }
 
 .index-header .navbar .navbar-nav .nav-item .nav-link {
@@ -22,7 +23,7 @@
     padding: 0px 20px;
 }
 
-.btn-appointment-header {
+.index-header .btn-appointment-header {
     background-color: #F1CE66;
     color: #0D0007;
     border-bottom: 3px solid #D94E73;
@@ -33,7 +34,7 @@
     border-color: #fff !important;
 }
 
-.fa-bars {
+.index-header .fa-bars {
     color: #fff;
 }
 
@@ -419,13 +420,71 @@
 /* index-price section end */
 
 
+/* index-benifit section start */
+
+.index-benifit{
+    background-image: url('../images/index-benbg.png');
+    padding: 7% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.index-benifit .input-btn{
+    display: flex;
+    align-items: center;
+}
+.index-benifit .input-btn .form-control{
+    background-color: transparent;
+    padding: 0.75rem 0.75rem;
+    border-top-right-radius:0;
+    border-bottom-right-radius: 0;
+}
+.index-benifit .input-btn .btn1{
+    padding: 12px 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* index-benifit section end */
 
 
 
 
+/************************************************ ABOUT US PAGE   **********************************************************/
+
+/* about-banner section start */
+
+.about-banner{
+    background-image: url('../images/about-headbg.png');
+    padding: 7% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
 
+/* about-banner section end */
 
+.about-sec1 p,
+.about-sec2 p{
+    color: #1C4859;
+}
+.about-sec1 .img-sec{
+    position: relative;
+}
+.about-sec1 .img-sec .text-block{
+    position: absolute;
+    bottom: -15%;
+    margin: auto;
+    width: 80%;
+    right: 0;
+    left: 0;
+    background-color: #F1CE66;
+    padding: 3%;
+}
+.about-sec2{
+    margin-top: 30vh;
+}
 
 
 /* media queries */
@@ -458,11 +517,23 @@
         right: 0;
         position: inherit;
     }
+    .about-sec1 .img-sec .text-block{
+        position: initial;
+        width: 100%;
+    }
+    .about-sec2{
+        margin-top: 20vh;
+    }
+    
 }
 
 @media (min-width:768px) AND (max-width:990px) {
     .index-about-us .main-sec .right-sec {
         padding: 15px;
         right: 0;
+    }
+    .about-sec1 .img-sec .text-block{
+        bottom: -30%;
+        width: 90%;
     }
 }
