@@ -3,9 +3,7 @@
     position: relative;
 }
 
-.header-logo {
-    width: 75%;
-}
+
 
 .index-header .navbar {
     z-index: 999;
@@ -569,6 +567,16 @@
 
 /* media queries */
 
+@media (max-width:400px){
+    .index-price .sin-plan .plan-body .body-text ul li{
+        padding: 4px;
+    }
+    .index-price .sin-plan .plan-body .body-text{
+        padding: 4px;
+        top: 0;
+    }
+}
+
 
 @media (max-width:500px) {
     .index-header .navbar-collapse {
@@ -604,7 +612,12 @@
     .about-sec2{
         margin-top: 20vh;
     }
-    
+    .header-logo {
+        width: 75%;
+    }
+    .time-text{
+        font-size: 5vw !important;
+    }
 }
 
 @media (min-width:768px) AND (max-width:990px) {
