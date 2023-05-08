@@ -7,6 +7,9 @@ p, span{
 .m-sec-top{
     margin-top: 100px;
 }
+.orange-color{
+    color: #BF7D2C;
+}
 .main-heading42{
     color: #BF7D2C;
     font-size: 40px;
@@ -24,7 +27,61 @@ p, span{
     color: #0D0D0D;
 }
 
+.btn1{
+    background-color: #F1CE66;
+    color: #000;
+    padding: 12px 0px;
+}
+
+
+/* global-navbar start */
+
+.global-navbar{
+    background-color: #fff;
+    padding: 10px 20px;
+}
+.global-navbar .btn-appointment-header {
+    background-color: #F1CE66;
+    color: #0D0007;
+}
+
+/* global-navbar end */
+
+
+/* footer styling start */
+
+.footer{
+    background-color: #0D0D0D;
+    color: #fff;
+    padding-top:5%;
+}
+.footer .footer-bottom{
+    border-top: 1px solid #fff;
+}
+
+/* footer styling end */
+
+
 /* media queries */
+
+@media (max-width:768px){
+    .footer .border-right,
+    .footer .border-right-2{
+        border-bottom : 1px solid #fff;
+    }
+}
+
+@media (min-width:768px){
+    .footer .border-right{
+        border-right : 1px solid #fff;
+    }
+}
+
+@media (min-width:990px){
+    .footer .border-right-2{
+        border-right : 1px solid #fff;
+    }
+}
 
 @media (min-width:1400px){
     .main-heading32{
