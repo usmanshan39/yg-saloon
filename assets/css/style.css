@@ -565,6 +565,44 @@
 }
 /* -----------------------contact-us Page End   ------------ */
 
+/* -----------------------services Page start   ------------ */
+
+
+.services-banner{
+    background-image: url('../images/services-bg.png');
+    padding: 7% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.services-sec1{
+    background-image: url('../images/ser-bg.png');
+    padding: 7% 0px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.services-sec1 .text-box .title-text{
+    font-size: 24px;
+    font-family: 'Inter', sans-serif;
+    color: #373449;
+    font-weight: 500;
+}
+.services-sec1 .text-box .body-text{
+    color: #65656A;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+
+
+/* -----------------------services Page End   ------------ */
+
+
+
+
 /* media queries */
 
 @media (max-width:400px){
@@ -628,5 +666,11 @@
     .about-sec1 .img-sec .text-block{
         bottom: -30%;
         width: 90%;
+    }
+}
+
+@media (max-width:1200px){
+    .services-sec1{
+        background-image: linear-gradient(to right, rgba(241,206,102,0), rgba(241,206,102,0.31));
     }
 }
