@@ -63,7 +63,23 @@ p, span{
 
 
 /* media queries */
+@media (max-width:499px){
+    .main-heading42{
+        font-size: 32px;
+    }
+    .main-heading32{
+        font-size: 20px;
+    }
+}
 
+@media (min-width:500px) AND (max-width:768px){
+    .main-heading42{
+        font-size: 36px;
+    }
+    .main-heading32{
+        font-size: 23px;
+    }
+}
 @media (max-width:768px){
     .footer .border-right,
     .footer .border-right-2{
@@ -80,6 +96,13 @@ p, span{
 @media (min-width:990px){
     .footer .border-right-2{
         border-right : 1px solid #fff;
+    }
+}
+@media (max-width:990px){
+    .global-navbar{
+        position: absolute;
+        top: 0;
+        width: 100%;
     }
 }
 
