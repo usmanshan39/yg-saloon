@@ -357,7 +357,7 @@
     justify-content: space-between;
 }
 .index-price .sin-plan .plan-header .text-sec h1{
-    font-size: 33px;
+    font-size: 25px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
@@ -397,7 +397,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .index-price .sin-plan .plan-body .body-text ul{
     width: 100%;
@@ -684,6 +684,13 @@
     .services-banner{
         margin-top: 80px;
         padding: 7% 20px;
+    }
+    .index-price .sin-plan .plan-body .body-text ul li{
+        padding: 7px;
+    }
+    .index-price .sin-plan .plan-body .body-text{
+        padding: 7px;
+        top: 0;
     }
 }
 @media (max-width:1200px){
