@@ -91,14 +91,18 @@
     background: #F1CE66;
     color: #fff;
     position: absolute;
-    right: 12%;
+    right: 1%;
     top: 0;
     bottom: 0;
     height: fit-content;
     margin: auto;
-    padding: 30px;
+    padding: 2.5%;
 }
-
+.about-right{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
 /* index abour us section end */
 
 /* index-secret section start */
@@ -353,7 +357,7 @@
     justify-content: space-between;
 }
 .index-price .sin-plan .plan-header .text-sec h1{
-    font-size: 33px;
+    font-size: 25px;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
 }
@@ -393,7 +397,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .index-price .sin-plan .plan-body .body-text ul{
     width: 100%;
@@ -626,6 +630,9 @@
         -ms-border-radius: 7px;
         -o-border-radius: 7px;
     }
+    .header-logo img{
+        width: 165px;
+    }
 }
 
 @media (max-width:768px) {
@@ -661,7 +668,8 @@
 @media (min-width:768px) AND (max-width:990px) {
     .index-about-us .main-sec .right-sec {
         padding: 15px;
-        right: 0;
+        /* right: 0; */
+        position: initial;
     }
     .about-sec1 .img-sec .text-block{
         bottom: -30%;
@@ -669,8 +677,42 @@
     }
 }
 
+@media (max-width:990px){
+    .about-banner,
+    .contact-us-banner,
+    .portfolio-banner,
+    .services-banner{
+        margin-top: 80px;
+        padding: 7% 20px;
+    }
+    .index-price .sin-plan .plan-body .body-text ul li{
+        padding: 7px;
+    }
+    .index-price .sin-plan .plan-body .body-text{
+        padding: 7px;
+        top: 0;
+    }
+}
 @media (max-width:1200px){
     .services-sec1{
         background-image: linear-gradient(to right, rgba(241,206,102,0), rgba(241,206,102,0.31));
+    }
+}
+
+@media (min-width:990px) AND (max-width:1399px){
+    .index-header .navbar .navbar-nav .nav-item .nav-link{
+        padding: 0px 12px;
+        font-size: 16px;
+    }
+    .header-text{
+        font-size: 16px;
+    }
+    .header-logo img{
+        width: 70%;
+    }
+}
+@media (max-width:1450px){
+    .about-right{
+        display: none;
     }
 }
