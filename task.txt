@@ -1,4 +1,5 @@
 1: servces slider in home page according to content of servies page.
+(slider in mobile and 2 rows in home page)
 2: new field for mobile number
 3: Book appointment popup on appointment buttons
 5: services images in sliders
@@ -6,3 +7,4 @@
 7: Servies page design issues.
 8: Add packages in services page.
 9: Navbar response issues in mobile.
+10: Portfolio page design according to figma
