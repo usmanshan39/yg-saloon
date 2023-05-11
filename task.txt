@@ -1,5 +1,5 @@
 1: servces slider in home page according to content of servies page.
-(slider in mobile and 2 rows in home page)
+(slider in mobile and 2 rows in home page) (done)
 2: new field for mobile number(done)
 3: Book appointment popup on appointment buttons
 5: services images in sliders(done)
