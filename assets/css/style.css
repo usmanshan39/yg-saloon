@@ -330,12 +330,21 @@
     background-image: linear-gradient(to right, rgba(92,92,30,0.4), rgba(51,51,0,0.7));
     padding: 8%;
 }
-.index-schdule .book-form .cus-form-control {
+.modal-content .book-form{
+    padding: 8%;
+}
+.index-schdule .book-form .cus-form-control,
+.modal-content .book-form .cus-form-control {
     padding: 0.7rem .75rem;
     background-color: transparent !important;
     color: #ced4da;
 }
 
+.modal-content .btn-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
 
 /* index-schdule section end */
 
@@ -416,7 +425,7 @@
 }
 .index-price .sin-plan .plan-body .body-text ul li{
     color: #fff;
-    padding: 5px 0px;
+    padding: 4px 0px;
 }
 .index-price .sin-plan .plan-body .body-text ul li .text{
     display: flex;
@@ -623,7 +632,7 @@
 
 @media (max-width:400px){
     .index-price .sin-plan .plan-body .body-text ul li{
-        padding: 4px;
+        padding: 2px;
     }
     .index-price .sin-plan .plan-body .body-text{
         padding: 4px;
@@ -702,7 +711,7 @@
         padding: 7% 20px;
     }
     .index-price .sin-plan .plan-body .body-text ul li{
-        padding: 7px;
+        padding: 4px;
     }
     .index-price .sin-plan .plan-body .body-text{
         padding: 7px;

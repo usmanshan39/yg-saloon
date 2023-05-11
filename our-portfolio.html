@@ -56,7 +56,7 @@
                         <p class="text-center me-3 me-xl-5 mb-0 header-text">+971 0522381623 / 624 / 625<br>Prime Tower –
                             Office #
                             3101, Dubai</p>
-                        <a class="btn btn-appointment-header">Appointment</a>
+                        <button class="btn btn-appointment-header" data-bs-toggle="modal" data-bs-target="#appModal">Appointment</button>
                     </div>
                 </div>
             </div>
@@ -76,6 +76,26 @@
     <div class="m-sec-top">
         <div class="container">
             <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 mt-3">
+                            <img src="assets/images/port-1.png" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <img src="assets/images/port-2.png" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12 mt-3">
+                            <img src="assets/images/port-4.png" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <img src="assets/images/port-3.png" class="img-fluid">
+                </div>
+            </div>
+            <!-- <div class="row">
                 <div class="col-md-8 col-lg-8">
                     <div class="galleryTopImages">
                         <img src="assets/images/galleryImg1.png" class="img-fluid" alt="image" >
@@ -86,7 +106,7 @@
                         <img src="assets/images/galleryImg2.png" class="img-fluid" alt="image">
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-md-4 mt-3 col-lg-4">
                     <img src="assets/images/galleryImg3.png" class="img-fluid h-100" alt="image">
@@ -199,6 +219,37 @@
     </section>
 
     <!-- footer section end -->
+
+      <!-- Modal -->
+  <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="book-form">
+          <p class="small-heading1">Book Appointment</p>
+          <h1 class="main-heading42">Today For Free</h1>
+          <form>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control cus-form-control" placeholder="Your name">
+            </div>
+            <div class="form-group mt-3">
+              <input type="email" class="form-control cus-form-control" placeholder="Email Address">
+            </div>
+            <div class="form-group mt-3">
+              <input type="number" class="form-control cus-form-control" placeholder="Mobile Number">
+            </div>
+            <div class="form-group mt-3">
+              <input type="date" class="form-control cus-form-control">
+            </div>
+            <div class="form-group mt-3">
+              <input type="time" class="form-control cus-form-control">
+            </div>
+            <button class="btn btn1 form-control mt-3">make an appointment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/bootstrap.bundle.js"></script>
