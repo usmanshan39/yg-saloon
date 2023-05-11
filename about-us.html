@@ -30,7 +30,7 @@
     <header class="about-us">
         <nav class="global-navbar navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="" href="#"><img src="./assets/images/logo-black.png" class="img-fluid header-logo"></a>
+                <a class="header2-logo" href="./index.html"><img src="./assets/images/logo-black.png" class="img-fluid header-logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -40,16 +40,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About&nbsp;us</a>
+                            <a class="nav-link" href="./about-us.html">About&nbsp;us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a class="nav-link" href="./services.html">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
+                            <a class="nav-link" href="./our-portfolio.html">Portfolio</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">
@@ -146,16 +146,19 @@
             <h1 class="main-heading42">Today For Free</h1>
             <form>
               <div class="form-group mt-3">
-                <input type="text" class="form-control cus-form-control" id="name" placeholder="Your name">
+                <input type="text" class="form-control cus-form-control" placeholder="Your name">
               </div>
               <div class="form-group mt-3">
-                <input type="email" class="form-control cus-form-control" id="name" placeholder="Email Address">
+                <input type="email" class="form-control cus-form-control" placeholder="Email Address">
               </div>
               <div class="form-group mt-3">
-                <input type="date" class="form-control cus-form-control" id="name">
+                <input type="number" class="form-control cus-form-control" placeholder="Mobile Number">
               </div>
               <div class="form-group mt-3">
-                <input type="time" class="form-control cus-form-control" id="name">
+                <input type="date" class="form-control cus-form-control">
+              </div>
+              <div class="form-group mt-3">
+                <input type="time" class="form-control cus-form-control">
               </div>
               <button class="btn btn1 form-control mt-3">make an appointment</button>
             </form>
@@ -208,20 +211,7 @@
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/bootstrap.bundle.js"></script>
     <script src="assets/owlcarousel/owl.carousel.js"></script>
-    <script>
-        var divisor = document.getElementById("divisor"),
-            handle = document.getElementById("handle"),
-            slider = document.getElementById("slider");
-
-        function moveDivisor() {
-            handle.style.left = slider.value + "%";
-            divisor.style.width = slider.value + "%";
-        }
-
-        window.onload = function () {
-            moveDivisor();
-        };
-    </script>
+    <script src="assets/js/custom/script.js"></script>
 
 </body>
 

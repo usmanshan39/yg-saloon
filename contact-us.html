@@ -30,7 +30,7 @@
     <header class="about-us">
         <nav class="global-navbar navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="header-logo" href="#"><img src="./assets/images/logo-black.png" class="img-fluid"></a>
+                <a class="header-logo" href="./index.html"><img src="./assets/images/logo-black.png" class="img-fluid"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -40,16 +40,16 @@
                 <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About&nbsp;us</a>
+                            <a class="nav-link" href="./about-us.html">About&nbsp;us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services</a>
+                            <a class="nav-link" href="./services.html">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
+                            <a class="nav-link" href="./our-portfolio.html">Portfolio</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">
@@ -178,20 +178,8 @@
     <script src="./assets/js/jquery.js"></script>
     <script src="./assets/js/bootstrap.bundle.js"></script>
     <script src="assets/owlcarousel/owl.carousel.js"></script>
-    <script>
-        var divisor = document.getElementById("divisor"),
-            handle = document.getElementById("handle"),
-            slider = document.getElementById("slider");
-
-        function moveDivisor() {
-            handle.style.left = slider.value + "%";
-            divisor.style.width = slider.value + "%";
-        }
-
-        window.onload = function () {
-            moveDivisor();
-        };
-    </script>
+    <script src="assets/js/custom/script.js"></script>
+    
 
 </body>
 
