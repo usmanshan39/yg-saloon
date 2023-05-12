@@ -8,3 +8,7 @@
 8: Add packages in services page.(done)
 9: Navbar response issues in mobile.(done)
 10: Portfolio page design according to figma
+
+
+12 May 2023
+
