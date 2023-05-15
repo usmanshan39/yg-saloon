@@ -43,7 +43,7 @@
 .index-header .main-sec .text-part {
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -35%;
     left: 0;
     right: 0;
     width: fit-content;
@@ -637,6 +637,9 @@
     .index-price .sin-plan .plan-body .body-text{
         padding: 4px;
         top: 0;
+    }
+    .index-header .main-sec .text-part{
+        bottom: -22%;
     }
 }
 
