@@ -658,6 +658,12 @@
     .header-logo img{
         width: 165px;
     }
+    .index-price .sin-plan .plan-body .body-text ul li{
+        padding: 2px;
+    }
+    .index-price .sin-plan .plan-body .body-text ul li p{
+        font-size: 14px;
+    }
 }
 
 @media (max-width:768px) {

@@ -4,8 +4,8 @@ $(document).ready(function () {
         margin: 10,
         padding: 40,
         nav: false,
-        autoplay: false,
-        autoplayTimeout: 3000,
+        autoplay: true,
+        autoplayTimeout: 4000,
         autoplayHoverPause: true,
         responsive: {
             0: {

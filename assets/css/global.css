@@ -65,10 +65,13 @@ p, span{
 /* media queries */
 @media (max-width:499px){
     .main-heading42{
-        font-size: 32px;
+        font-size: 22px;
     }
     .main-heading32{
-        font-size: 20px;
+        font-size: 17px;
+    }
+    p{
+        font-size: 17px;
     }
 }
 
