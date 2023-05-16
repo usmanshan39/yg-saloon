@@ -4,6 +4,9 @@
 p, span{
     font-size: 20px;
 }
+.white-color{
+    color: #fff !important;
+}
 .m-sec-top{
     margin-top: 100px;
 }
@@ -24,6 +27,7 @@ p, span{
     font-family: 'El Messiri', sans-serif;
 }
 .small-heading1{
+    font-size: 20px;
     color: #0D0D0D;
 }
 

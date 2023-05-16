@@ -260,9 +260,12 @@
     display: flex;
     align-items: center;
 }
+.index-exp .checks .check-link span{
+    font-size: 15px;
+}
 
 .index-exp .checks .check-logo {
-    width: 30px;
+    width: 25px;
 }
 
 .index-exp .checks .check-link span {
@@ -626,6 +629,13 @@
 
 /* -----------------------services Page End   ------------ */
 
+
+
+/* blogs pages */
+
+.blogs-sec1 .card-img, .card-img-top{
+    height: 200px;
+}
 
 
 
