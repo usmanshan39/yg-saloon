@@ -16,6 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <!-- Owl Stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
   <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
 
@@ -1412,7 +1413,7 @@
         <div class="book-form">
           <p class="small-heading1">Book Appointment</p>
           <h1 class="main-heading42">Today For Free</h1>
-          <form>
+          <!-- <form> -->
             <div class="form-group mt-3">
               <input type="text" class="form-control cus-form-control" placeholder="Your name">
             </div>
@@ -1428,8 +1429,8 @@
             <div class="form-group mt-3">
               <input type="time" class="form-control cus-form-control">
             </div>
-            <button class="btn btn1 form-control mt-3">Make an Appointment</button>
-          </form>
+            <button class="btn btn1 form-control mt-3" id="myButton">Make an Appointment</button>
+          <!-- </form> -->
         </div>
       </div>
     </div>
@@ -1441,6 +1442,7 @@
   <script src="./assets/js/jquery.js"></script>
   <script src="./assets/js/bootstrap.bundle.js"></script>
   <script src="assets/owlcarousel/owl.carousel.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
   <script src="assets/js/custom/script.js"></script>
   <script>
     var divisor = document.getElementById("divisor"),

@@ -1,3 +1,12 @@
+document.getElementById("myButton").addEventListener("click", function() {
+    Swal.fire({
+      title: 'Success!',
+      text: 'Appointment Booked Successfully',
+      icon: 'success',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'OK'
+    });
+  });
 $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
