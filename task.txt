@@ -1,14 +1,21 @@
-1: servces slider in home page according to content of servies page.
-(slider in mobile and 2 rows in home page) (done)
-2: new field for mobile number(done)
-3: Book appointment popup on appointment buttons
-5: services images in sliders(done)
-6: Links should work (done)
-7: Servies page design issues.(done)
-8: Add packages in services page.(done)
-9: Navbar response issues in mobile.(done)
-10: Portfolio page design according to figma
+
+Appointment Management:
+
+View and manage upcoming appointments.
+Schedule new appointments for clients.
+Send notifications or reminders to clients about their appointments (send email button can send email by click on button).
+Cancel or reschedule appointments as needed.
+Staff Management:
 
 
-12 May 2023
+Blog Management with SEO Tools:
 
+Create and manage blog posts within the dashboard.
+Add titles, content, images, and formatting to blog posts.
+Schedule or publish blog posts at specified dates and times.
+Enable search engine optimization (SEO) tools for better visibility:
+Add meta tags (title, description, keywords) to optimize search engine results.
+Generate SEO-friendly URLs for blog posts.
+Provide suggestions or guidelines for keyword usage.
+Optimize images by adding alt tags and descriptions.
+Enable social media sharing options for blog posts.
