@@ -11,6 +11,14 @@ $(document).ready(function () {
                 let tableBody = $('#dataTable tbody');
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
+                    let recordStatus;
+                    if(rowData.status == "Pending"){
+                        recordStatus = '<span class="badge badge-dark">Pending</span>';
+                    }else if(rowData.status == "Cancel"){
+                        recordStatus = '<span class="badge badge-danger">Cancel</span>';
+                    }else if(rowData.status == "Complete"){
+                        recordStatus = '<span class="badge badge-success">Complete</span>';
+                    }
                     let rowHtml = '<tr>' +
                         '<td>' + rowData.id + '</td>' +
                         '<td>' + rowData.name + '</td>' +
@@ -18,9 +26,9 @@ $(document).ready(function () {
                         '<td>' + rowData.mobile + '</td>' +
                         '<td>' + rowData.app_date + '</td>' +
                         '<td>' + rowData.app_time + '</td>' +
-                        '<td>' + rowData.status + '</td>' +
-                        '<td> <button class="btn btn-outline-success btn-sm complete-appointment-btn"><i class="fa fa-check"></i></button>' +
-                        '<button class="btn btn-outline-danger mx-2 btn-sm"><i class="fa fa-times"></i></button>' +
+                        '<td>' + recordStatus + '</td>' +
+                        '<td> <button class="btn btn-outline-success btn-sm complete-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-check"></i></button>' +
+                        '<button class="btn btn-outline-danger mx-2 btn-sm cancel-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-times"></i></button>' +
                         '<button class="btn btn-outline-primary btn-sm edit-appointment-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editAppointmentModal">' +
                         '<i class="fa fa-edit"></i>' +
                         '</button>' +
@@ -84,18 +92,66 @@ $(document).ready(function () {
 
     $(document).on('click', '.complete-appointment-btn', function (e) {
         e.preventDefault();
+        var recordId = $(this).data('record-id');
         Swal.fire({
-            title: 'Confirm Deletion',
-            text: 'Are you sure you want to delete this record?',
+            title: 'Confirm',
+            text: 'Are you sure you want to Complete this Appointment?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#5cb85c',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Complete',
-            cancelButtonText: 'Cancel'
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log("yesssssssssssss");
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "markAppComplete" , id : recordId},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            $('#editAppointmentModal').modal('hide');
+                            loadAppointments();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        });
+    })
+
+    $(document).on('click', '.cancel-appointment-btn', function (e) {
+        e.preventDefault();
+        var recordId = $(this).data('record-id');
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to cancel this appointment?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "markAppCancel" , id : recordId},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            $('#editAppointmentModal').modal('hide');
+                            loadAppointments();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
             }
         });
     })
