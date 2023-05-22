@@ -12,16 +12,21 @@
             <span>Dashboard</span></a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" href="blogs.php">
+            <i class="fas fa-blog"></i>
+            <span>Blogs</span></a>
+    </li>
+    <!-- <li class="nav-item">
         <a class="nav-link" href="tables.php">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> -->
 
     <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item">
         <a class="nav-link" href="tables.php">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>
 

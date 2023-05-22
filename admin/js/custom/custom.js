@@ -8,7 +8,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 let tableData = JSON.parse(response);
-                let tableBody = $('#dataTable tbody');
+                let tableBody = $('#appointmentTable tbody');
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
                     let recordStatus;
@@ -20,7 +20,7 @@ $(document).ready(function () {
                         recordStatus = '<span class="badge badge-success">Complete</span>';
                     }
                     let rowHtml = '<tr>' +
-                        '<td>' + rowData.id + '</td>' +
+                        '<td>' + (index+1)  + '</td>' +
                         '<td>' + rowData.name + '</td>' +
                         '<td>' + rowData.email + '</td>' +
                         '<td>' + rowData.mobile + '</td>' +
@@ -36,7 +36,7 @@ $(document).ready(function () {
                         '</tr>';
                     tableBody.append(rowHtml);
                 });
-                $('#dataTable').DataTable();
+                $('#appointmentTable').DataTable();
             },
             error: function (data, status, error) {
                 console.log("Fetch Appointments error ", data);
@@ -147,6 +147,162 @@ $(document).ready(function () {
                             swalAlert('Success!', 'success', result.message);
                             $('#editAppointmentModal').modal('hide');
                             loadAppointments();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        });
+    })
+
+
+    // blogs sections start
+
+
+    function loadBlogs() {
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: {
+                action: 'fetchAllBlogs'
+            },
+            success: function (response) {
+                let tableData = JSON.parse(response);
+                let tableBody = $('#blogsTable tbody');
+                tableBody.empty();
+                $.each(tableData, function (index, rowData) {
+                    let recordStatus;
+                    if(rowData.published == 1){
+                        recordStatus = '<span class="badge badge-success">Published</span>';
+                    }else{
+                        recordStatus = '<span class="badge badge-dark">Pending</span>';
+                    }
+                    let rowHtml = '<tr>' +
+                        '<td>' + (index+1) + '</td>' +
+                        '<td>' + rowData.title + '</td>' +
+                        '<td> <img src="./uploads/'+rowData.blog_image+'" width="100px"> </td>' +
+                        '<td>' + rowData.blog_desc + '</td>' +
+                        '<td>' + recordStatus + '</td>' +
+                        '<td><button class="btn btn-outline-danger mx-2 btn-sm cancel-blog-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
+                        '<button class="btn btn-outline-primary btn-sm edit-blog-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editBlogModal">' +
+                        '<i class="fa fa-edit"></i>' +
+                        '</button>' +
+                        '</td>' +
+                        '</tr>';
+                    tableBody.append(rowHtml);
+                });
+                $('#blogsTable').DataTable();
+            },
+            error: function (data, status, error) {
+                console.log("Fetch Appointments error ", data);
+            }
+        });
+    }
+    loadBlogs();
+
+
+    $('#blogForm').submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'addNewBlog');
+        $.ajax({
+          url: "functions/functions.php",
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            let result = JSON.parse(response);
+                if (result.status) {
+                    swalAlert('Success!', 'success', result.message);
+                    $('#blogModal').modal('hide');
+                    loadBlogs();
+                    $('#blogForm')[0].reset();
+                } else {
+                    swalAlert('Error!', 'error', result.message);
+                }
+          },
+          error: function(xhr, status, error) {
+            alert('Error occurred while submitting the form.');
+            console.log(xhr.responseText);
+          }
+        });
+    });
+
+    $(document).on('click', '.edit-blog-btn', function (e) {
+        e.preventDefault();
+        var recordId = $(this).data('record-id');
+        let data = {
+            id: recordId,
+            action: 'getSingleBlog'
+        };
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: data,
+            success: function (response) {
+                let result = JSON.parse(response);
+                if (result.status) {
+                    $("#editBlogIdInput").val(recordId);
+                    $("#editBlogtitle").val(result.data.title);
+                    // $("#editBlogimage").val(result.data.blog_image);
+                    $("#editBlogdescription").val(result.data.blog_desc);
+                }
+            }
+        })
+    });
+
+    $('#editBlogForm').submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'updateBlog');
+        $.ajax({
+          url: "functions/functions.php",
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            let result = JSON.parse(response);
+                if (result.status) {
+                    swalAlert('Success!', 'success', result.message);
+                    $('#editBlogModal').modal('hide');
+                    loadBlogs();
+                } else {
+                    swalAlert('Error!', 'error', result.message);
+                }
+          },
+          error: function(xhr, status, error) {
+            alert('Error occurred while submitting the form.');
+            console.log(xhr.responseText);
+          }
+        });
+    });
+
+    $(document).on('click', '.cancel-blog-btn', function (e) {
+        e.preventDefault();
+        var recordId = $(this).data('record-id');
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete this Blog?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteBlog" , id : recordId},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadBlogs();
                         } else {
                             swalAlert('Success!', 'error', result.message);
                         }
