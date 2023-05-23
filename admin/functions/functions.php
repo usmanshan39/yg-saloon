@@ -79,27 +79,41 @@
     }
 
     else if($action == "sendEmail"){
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $message = $_POST['message'];
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM appointments where id = ".$id."";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $name = $row['name'];
+                    $email = $row['email'];
+                    $phone = $row['mobile'];
 
-        $to = 'booking@creation31.com';
-        $subject = 'New booking request';
-        $headers = "From: $email\r\n";
-        $headers .= "Reply-To: $email\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-        $body = "<h2>New booking request</h2>";
-        $body .= "<p><strong>Name:</strong> $name</p>";
-        $body .= "<p><strong>Email:</strong> $email</p>";
-        $body .= "<p><strong>Phone:</strong> $phone</p>";
-        $body .= "<p><strong>Message:</strong> $message</p>";
+                    $to = $email;
+                    $subject = 'Yg Saloon Appointment Reminder';
+                    $headers = "From: info@ygsalon.ae\r\n";
+                    $headers .= "Reply-To: info@ygsalon.ae\r\n";
+                    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+                    $body = "<h2>Hi ".$name."</h2>";
+                    $body .= "<p>Your appointment for yg saloon is on data ".$row['app_date']." at time ".$row['app_time']."</p>";
+                    $body .= "<p>Please Insure your availablity</p>";
+                    $body .= "<p>Thanks</p>";
 
-        // Send the email
-        if (mail($to, $subject, $body, $headers)) {
-        echo "Thank you for your booking request! We will get back to you shortly.";
-        } else {
-        echo "There was an error sending your booking request. Please try again.";
+
+                    // Send the email
+                    if (mail($to, $subject, $body, $headers)) {
+                    echo "Thank you for your booking request! We will get back to you shortly.";
+                    } else {
+                    echo "There was an error sending your booking request. Please try again.";
+                    }
+                }
+            }else{
+                $data = array("status"=> false , "data"=>"");
+                echo json_encode($data);
+            }
+        }else{
+            $data = array("status"=> false , "data"=>"");
+            echo json_encode($data);
         }
     }
 
