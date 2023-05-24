@@ -1,21 +1,7 @@
-
-Appointment Management:
-
-View and manage upcoming appointments.
-Schedule new appointments for clients.
-Send notifications or reminders to clients about their appointments (send email button can send email by click on button).
-Cancel or reschedule appointments as needed.
-Staff Management:
-
-
-Blog Management with SEO Tools:
-
-Create and manage blog posts within the dashboard.
-Add titles, content, images, and formatting to blog posts.
-Schedule or publish blog posts at specified dates and times.
-Enable search engine optimization (SEO) tools for better visibility:
-Add meta tags (title, description, keywords) to optimize search engine results.
-Generate SEO-friendly URLs for blog posts.
-Provide suggestions or guidelines for keyword usage.
-Optimize images by adding alt tags and descriptions.
-Enable social media sharing options for blog posts.
+1: submit date in appointment
+2: Blog image edit option
+3: users table
+4: login and logout
+5: super admin logic
+6: Add appointment
+7: Different emails templates
