@@ -6,15 +6,20 @@
         <div class="sidebar-brand-text mx-3">YG Saloon</div>
     </a>
     <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Appointments</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="blogs.php">
             <i class="fas fa-blog"></i>
             <span>Blogs</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="users.php">
+            <i class="fas fa-blog"></i>
+            <span>Users</span></a>
     </li>
     <!-- <li class="nav-item">
         <a class="nav-link" href="tables.php">

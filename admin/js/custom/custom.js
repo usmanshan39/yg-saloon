@@ -46,6 +46,30 @@ $(document).ready(function () {
     }
     loadAppointments();
 
+    $(document).on('submit', '#addAppointmentForm', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'addAppointment');
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                let result = JSON.parse(response);
+                if (result.status) {
+                    swalAlert('Success!', 'success', result.message);
+                    $('#addAppointmentModal').modal('hide');
+                    $('#addAppointmentForm')[0].reset();
+                    loadAppointments();
+                } else {
+                    swalAlert('Success!', 'error', result.message);
+                }
+            }
+        })
+    });
+
     $(document).on('click', '.edit-appointment-btn', function (e) {
         e.preventDefault();
         var recordId = $(this).data('record-id');
@@ -282,6 +306,7 @@ $(document).ready(function () {
                     $("#editBlogtitle").val(result.data.title);
                     // $("#editBlogimage").val(result.data.blog_image);
                     $("#editBlogdescription").val(result.data.blog_desc);
+                    $("#editBlogStatus").val(result.data.published);
                 }
             }
         })
@@ -355,5 +380,156 @@ $(document).ready(function () {
             confirmButtonText: 'OK'
         });
     }
+
+    // users section
+
+    function loadUsers() {
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: {
+                action: 'fetchAllUsers'
+            },
+            success: function (response) {
+                let tableData = JSON.parse(response);
+                let tableBody = $('#usersTable tbody');
+                tableBody.empty();
+                $.each(tableData, function (index, rowData) {
+                    console.log("rowData" , rowData);
+                    let userType;
+                    if(rowData.user_type == 'super'){
+                        userType = '<span class="badge badge-success">Super Admin</span>';
+                    }else if(rowData.user_type == 'admin'){
+                        userType = '<span class="badge badge-dark">Admin</span>';
+                    }
+                    let rowHtml = '<tr>' +
+                        '<td>' + (index+1) + '</td>' +
+                        '<td>' + rowData.user_name + '</td>' +
+                        '<td>'+ rowData.user_email +'</td>' +
+                        '<td>*****</td>' +
+                        '<td>' + userType + '</td>' +
+                        '<td><button class="btn btn-outline-danger mx-2 btn-sm cancel-user-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
+                        '<button class="btn btn-outline-primary btn-sm edit-user-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editUserModal">' +
+                        '<i class="fa fa-edit"></i>' +
+                        '</button>' +
+                        '</td>' +
+                        '</tr>';
+                    tableBody.append(rowHtml);
+                });
+                $('#usersTable').DataTable();
+            },
+            error: function (data, status, error) {
+                console.log("Fetch Appointments error ", data);
+            }
+        });
+    }
+    loadUsers();
+
+    $(document).on('submit', '#addUserForm', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'addUser');
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                let result = JSON.parse(response);
+                if (result.status) {
+                    swalAlert('Success!', 'success', result.message);
+                    $('#addUserModal').modal('hide');
+                    $('#addUserForm')[0].reset();
+                    loadUsers();
+                } else {
+                    swalAlert('Success!', 'error', result.message);
+                }
+            }
+        })
+    });
+
+    $(document).on('click', '.edit-user-btn', function (e) {
+        e.preventDefault();
+        var recordId = $(this).data('record-id');
+        let data = {
+            id: recordId,
+            action: 'getSingleUser'
+        };
+        $.ajax({
+            url: "functions/functions.php",
+            type: "POST",
+            data: data,
+            success: function (response) {
+                let result = JSON.parse(response);
+                if (result.status) {
+                    $("#editUserIdInput").val(recordId);
+                    $("#editUserName").val(result.data.user_name);
+                    $("#editUserEmail").val(result.data.user_email);
+                    $('#editUserType').val(result.data.user_type);
+                }
+            }
+        })
+    });
+
+    $('#editUserForm').submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'updateUser');
+        $.ajax({
+          url: "functions/functions.php",
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(response) {
+            let result = JSON.parse(response);
+                if (result.status) {
+                    swalAlert('Success!', 'success', result.message);
+                    $('#editUserModal').modal('hide');
+                    $('#editUserForm')[0].reset();
+                    loadUsers();
+                } else {
+                    swalAlert('Error!', 'error', result.message);
+                }
+          },
+          error: function(xhr, status, error) {
+            alert('Error occurred while submitting the form.');
+            console.log(xhr.responseText);
+          }
+        });
+    });
+
+    $(document).on('click', '.cancel-user-btn', function (e) {
+        e.preventDefault();
+        var recordId = $(this).data('record-id');
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete this User?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteUser" , id : recordId},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadUsers();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        });
+    })
 
 });

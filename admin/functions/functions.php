@@ -16,6 +16,23 @@
         }
     echo json_encode($data);
     }
+    else if($action == "addAppointment"){
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $sql = "INSERT INTO appointments (name  , email , mobile , app_date , app_time)VALUE('$name' , '$email' , '$mobile' , '$date' , '$time')";
+        $result = mysqli_query($conn , $sql);
+        if($result){
+            $data = array("status"=> true , "message"=>"Successfully Create Appointment");
+            echo json_encode($data);
+        }else{
+            $data = array("status"=> false , "data"=>"Failed To Created Appointment");
+            echo json_encode($data);
+        }
+
+    }
 
     else if($action == "getSingleAppointment"){
         $id = $_POST['id'];
@@ -120,7 +137,7 @@
 
     // ******************* Blogs Sections *******************
 
-    if($action == "fetchAllBlogs"){
+    else if($action == "fetchAllBlogs"){
         $sql = "SELECT * FROM our_blogs";
         $result = $conn->query($sql);
         $data = array();
@@ -211,5 +228,145 @@
         }
     }
 
+    // ******************* Users Sections *******************
+
+    else if($action == "addUser"){
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $type = $_POST['userType'];
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $checkSql = "SELECT COUNT(*) AS count FROM users WHERE user_email = ?";
+        $checkStmt = $conn->prepare($checkSql);
+        $checkStmt->bind_param("s", $email);
+        $checkStmt->execute();
+        $result = $checkStmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if ($row['count'] > 0) {
+            $data = array("status" => false, "message" => "User already exists with the same email");
+            echo json_encode($data);
+        } else {
+            $sql = "INSERT INTO users (user_name, user_email, user_password, user_type) VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssss", $name, $email, $hashedPassword, $type);
+
+            if ($stmt->execute()) {
+                $data = array("status" => true, "message" => "User Created Successfully");
+                echo json_encode($data);
+            } else {
+                $data = array("status" => false, "message" => "Failed To Create User");
+                echo json_encode($data);
+            }
+        }
+    }
+
+    else if($action == "fetchAllUsers"){
+        $sql = "SELECT * FROM users";
+        $result = $conn->query($sql);
+        $data = array();
+        if ($result) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $data[] = $row;
+                }
+            }
+        }
+        echo json_encode($data);
+    }
+
+    else if($action == "getSingleUser"){
+        $id = $_POST['id'];
+        $sql = "SELECT * FROM users where id = ".$id."";
+        $result = $conn->query($sql);
+        if ($result) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $data = array("status"=> true , "data"=>$row);
+                    echo json_encode($data);
+                }
+            }else{
+                $data = array("status"=> false , "data"=>"");
+                echo json_encode($data);
+            }
+        }else{
+            $data = array("status"=> false , "data"=>"");
+            echo json_encode($data);
+        }
+    }
+    
+    else if($action == "updateUser"){
+        $id = $_POST['id'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $type = $_POST['userType'];
+
+
+        $singleUser = "SELECT * FROM users where id = ".$id."";
+        $singleUserResult = $conn->query($singleUser);
+        if ($singleUserResult) {
+            if ($singleUserResult->num_rows > 0) {
+                while ($row = $singleUserResult->fetch_assoc()) {
+                    if($row['user_email'] == $email){
+                        $sql = "UPDATE users SET user_name = ?, user_email = ?, user_type = ? WHERE id = ?";
+                        $stmt = $conn->prepare($sql);
+
+                        $stmt->bind_param("sssi", $name, $email, $type, $id);
+                        if ($stmt->execute()) {
+                            $data = array("status" => true, "message" => "Successfully Update Appointment");
+                            echo json_encode($data);
+                        } else {
+                            $data = array("status" => false, "data" => "Failed To Updated Appointment");
+                            echo json_encode($data);
+                        }
+                    }
+                    else{
+                        $checkSql = "SELECT COUNT(*) AS count FROM users WHERE user_email = ?";
+                        $checkStmt = $conn->prepare($checkSql);
+                        $checkStmt->bind_param("s", $email);
+                        $checkStmt->execute();
+                        $result = $checkStmt->get_result();
+                        $row = $result->fetch_assoc();
+
+                        if ($row['count'] > 0) {
+                            $data = array("status" => false, "message" => "User already exists with the same email");
+                            echo json_encode($data);
+                        } else {
+                            $sql = "UPDATE users SET user_name = ?, user_email = ?, user_type = ? WHERE id = ?";
+
+                            $stmt = $conn->prepare($sql);
+
+                            $stmt->bind_param("sssi", $name, $email, $type, $id);
+                            if ($stmt->execute()) {
+                                $data = array("status" => true, "message" => "Successfully Update Appointment");
+                                echo json_encode($data);
+                            } else {
+                                $data = array("status" => false, "data" => "Failed To Updated Appointment");
+                                echo json_encode($data);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+    }
+
+    else if ($action == "deleteUser"){
+        $id  = $_POST['id'];
+        $sql = "DELETE FROM users WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            $data = array("status" => true, "message" => "User Deleted Successfully");
+            echo json_encode($data);
+        }else{
+            $data = array("status" => false, "message" => "Failed To Delete User");
+            echo json_encode($data);
+        }
+    }
 
 ?>
