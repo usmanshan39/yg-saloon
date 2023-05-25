@@ -16,11 +16,17 @@
             <i class="fas fa-blog"></i>
             <span>Blogs</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="users.php">
-            <i class="fas fa-blog"></i>
-            <span>Users</span></a>
-    </li>
+    <?php 
+    if($_SESSION['userType'] == "super"){
+        ?>
+            <li class="nav-item">
+                <a class="nav-link" href="users.php">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span></a>
+            </li>
+        <?php
+    }
+    ?>
     <!-- <li class="nav-item">
         <a class="nav-link" href="tables.php">
             <i class="fas fa-fw fa-table"></i>
@@ -30,7 +36,7 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item">
-        <a class="nav-link" href="tables.php">
+        <a class="nav-link" href="./functions/logout.php">
             <i class="fas fa-sign-out-alt"></i>
             <span>Logout</span></a>
     </li>

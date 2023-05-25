@@ -532,4 +532,29 @@ $(document).ready(function () {
         });
     })
 
+
+    // login function
+    $(document).on('submit', '#loginForm', function (e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        formData.append('action', 'login');
+        $.ajax({
+            url: "functions/authentication.php",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                let result = JSON.parse(response);
+                console.log("result " , result);
+                if (result.status) {
+                    window.location.href = './index.php';
+                } else {
+                    swalAlert('Success!', 'error', result.message);
+                }
+            }
+        })
+    });
+    
+
 });

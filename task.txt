@@ -2,3 +2,4 @@
 4: login and logout
 5: super admin logic
 6: Add appointment
+7: Blog SEO meta title and description

@@ -1,4 +1,11 @@
 <?php 
+    // Start the session
+    session_start();
+
+    if(!isset($_SESSION['user_id'])) {
+        header("Location: ../login.php");
+        exit();
+    }
     require_once("config.php");
     $action = $_POST['action'];
 
