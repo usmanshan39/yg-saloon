@@ -1,3 +1,16 @@
+<?php require_once("./admin/functions/config.php");
+$id = $_GET['id'];
+$resultData;
+$sql = "SELECT * FROM our_blogs where id = ".$id."";
+$result = $conn->query($sql);
+if ($result) {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $resultData = $row;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +18,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Y-G Saloon</title>
+    <meta name="description" content="<?php echo $resultData['meta_desc'] ?>"/>
+    <title><?php echo $resultData['meta_title'] ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -79,10 +93,14 @@
 
     <section class="blogs-sec1 m-sec-top">
         <div class="container my-5">
-            <img class="w-100 my-3" src="assets/images/services/hair-ser.jpg" />
+            <img class="w-100 my-3" src="./admin/uploads/<?php echo $resultData['blog_image'] ?>" />
             
-            <div style="max-width: 700px; top: -80px;" class="mx-auto text-secondary position-relative">
-              <div class="text-center mb-4">
+            <div style="max-width: 700px;" class="mx-auto text-secondary position-relative">
+            <p class="my-2" style="line-height: 2;">
+            <?php echo $resultData['blog_desc'] ?>
+            </p>
+
+              <!-- <div class="text-center mb-4">
               <img src="assets/images/port-2.png" style="width: 120px; border: 5px solid #eee; background-color: white;" class="rounded-circle mx-auto text-center" />
               <div>
                   <small>
@@ -117,7 +135,7 @@
                 <small>
                     <a href="#" class="text-primary">#election</a>, <a href="#" class="text-primary">#politics</a>, <a href="#" class="text-primary">#trump</a>, <a href="#" class="text-primary">#revenge</a>, <a href="#" class="text-primary">#2020</a>
                 </small>
-              </div>
+              </div> -->
               
             </div>
           </div>

@@ -242,8 +242,8 @@ $(document).ready(function () {
                         '<td> <img src="./uploads/'+rowData.blog_image+'" width="100px"> </td>' +
                         '<td>' + rowData.blog_desc + '</td>' +
                         '<td>' + recordStatus + '</td>' +
-                        '<td><button class="btn btn-outline-danger mx-2 btn-sm cancel-blog-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
-                        '<button class="btn btn-outline-primary btn-sm edit-blog-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editBlogModal">' +
+                        '<td><button class="btn btn-outline-danger m-1 btn-sm cancel-blog-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
+                        '<button class="btn btn-outline-primary m-1 btn-sm edit-blog-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editBlogModal">' +
                         '<i class="fa fa-edit"></i>' +
                         '</button>' +
                         '</td>' +
@@ -301,12 +301,16 @@ $(document).ready(function () {
             data: data,
             success: function (response) {
                 let result = JSON.parse(response);
+                console.log("response" , result)
                 if (result.status) {
                     $("#editBlogIdInput").val(recordId);
                     $("#editBlogtitle").val(result.data.title);
                     // $("#editBlogimage").val(result.data.blog_image);
                     $("#editBlogdescription").val(result.data.blog_desc);
                     $("#editBlogStatus").val(result.data.published);
+                    $("#metaTitle").val(result.data.meta_title);
+                    $("#metaDesc").val(result.data.meta_desc);
+
                 }
             }
         })

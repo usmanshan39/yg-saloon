@@ -1,3 +1,4 @@
+<?php require_once("./admin/functions/config.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,72 +81,30 @@
     <section class="blogs-sec1 m-sec-top">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/eye-brow.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
+              <?php
+                $sql = "SELECT * FROM our_blogs";
+                $result = $conn->query($sql);
+                $data = array();
+                if ($result) {
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            
+                          ?>
+                            <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./admin/uploads/<?php echo $row['blog_image'] ?>" alt="Bologna">
+                                <div class="card-body">
+                                  <h4 class="card-title"><?php echo $row['title'] ?></h4>
+                                  <p class="card-text blog-short-p"><?php echo $row['blog_desc'] ?></p>
+                                  <a href="blog-details.php?id=<?php echo $row['id'] ?>" class="card-link">Read More</a>
+                                </div>
+                              </div>
                         </div>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/waxing-ser.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/eye-lashes.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/foot-spa.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/hair-ser.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4 mt-3">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/images/services/nails-ser.jpg" alt="Bologna">
-                        <div class="card-body">
-                          <h4 class="card-title">Bologna</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">Emilia-Romagna Region, Italy</h6>
-                          <p class="card-text">It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people. </p>
-                          <a href="blog-details.html" class="card-link">Read More</a>
-                        </div>
-                      </div>
-                </div>
+                          <?php
+                        }
+                    }
+                }
+               ?>
             </div>
         </div>
     </section>

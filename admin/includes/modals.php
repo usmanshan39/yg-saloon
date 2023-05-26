@@ -50,7 +50,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="appointmentIdInput" name="id">
+                    <input type="hidden" id="appointmentIdInput" name="id">
                     <div class="form-group">
                         <label for="date">Date</label>
                         <input type="date" id="appointmentDateInput" class="form-control" id="date" name="date">
@@ -72,7 +72,7 @@
 <!-- add blog -->
 
 <div class="modal fade" id="blogModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <form id="blogForm" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,9 +86,22 @@
                         <label for="title">Title:</label>
                         <input type="text" name="title" id="title" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="image">Image:</label>
-                        <input type="file" name="image" id="image" accept="image/*" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="image">Image:</label>
+                                <input type="file" name="image" id="image" accept="image/*" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="blogStatus">Status:</label>
+                                <select class="form-control" id="blogStatus" name="blogStatus" value="0">
+                                    <option value="1" selected>Publish</option>
+                                    <option value="0">Pending</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="description">Description:</label>
@@ -96,11 +109,13 @@
                             required></textarea>
                     </div>
                     <div class="form-group">
-                    <label for="blogStatus">Status:</label>
-                    <select class="form-control" id="blogStatus" name="blogStatus" value="0">
-                        <option value="1" selected>Publish</option>
-                        <option value="0">Pending</option>
-                    </select>
+                        <label for="metaTitle">Meta Title:</label>
+                        <input type="text" name="metaTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="metaDesc">metaDesc:</label>
+                        <textarea name="metaDesc" class="form-control" rows="4" cols="50"
+                            required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -113,7 +128,7 @@
 </div>
 
 <div class="modal fade" id="editBlogModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <form id="editBlogForm" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
@@ -123,7 +138,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="editBlogIdInput" name="id">
+                    <input type="hidden" id="editBlogIdInput" name="id">
                     <div class="form-group">
                         <label for="editBlogtitle">Title:</label>
                         <input type="text" name="title" id="editBlogtitle" class="form-control" required>
@@ -134,11 +149,20 @@
                             required></textarea>
                     </div>
                     <div class="form-group">
-                    <label for="editBlogStatus">Status:</label>
-                    <select class="form-control" id="editBlogStatus" name="editBlogStatus">
-                        <option value="1" selected>Publish</option>
-                        <option value="2">Pending</option>
-                    </select>
+                        <label for="editBlogStatus">Status:</label>
+                        <select class="form-control" id="editBlogStatus" name="editBlogStatus">
+                            <option value="1" selected>Publish</option>
+                            <option value="2">Pending</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="metaTitle">Meta Title:</label>
+                        <input type="text" name="metaTitle" id="metaTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="metaDesc">metaDesc:</label>
+                        <textarea name="metaDesc" id="metaDesc" class="form-control" rows="4" cols="50"
+                            required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -165,22 +189,25 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="enter Username" required>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="enter Username"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" required>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email"
+                            required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
+                        <input type="password" name="password" id="password" class="form-control"
+                            placeholder="Enter Password" required>
                     </div>
                     <div class="form-group">
-                    <label for="userType">Type:</label>
-                    <select class="form-control" id="userType" name="userType" value="0">
-                        <option value="super" selected>Super Admin</option>
-                        <option value="admin">Admin</option>
-                    </select>
+                        <label for="userType">Type:</label>
+                        <select class="form-control" id="userType" name="userType" value="0">
+                            <option value="super" selected>Super Admin</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -203,21 +230,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="editUserIdInput" name="id">
+                    <input type="hidden" id="editUserIdInput" name="id">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="editUserName" class="form-control" placeholder="enter Username" required>
+                        <input type="text" name="name" id="editUserName" class="form-control"
+                            placeholder="enter Username" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" name="email" id="editUserEmail" class="form-control" placeholder="Enter Email" required>
+                        <input type="email" name="email" id="editUserEmail" class="form-control"
+                            placeholder="Enter Email" required>
                     </div>
                     <div class="form-group">
-                    <label for="userType">Type:</label>
-                    <select class="form-control" id="editUserType" name="userType">
-                        <option value="super">Super Admin</option>
-                        <option value="admin">Admin</option>
-                    </select>
+                        <label for="userType">Type:</label>
+                        <select class="form-control" id="editUserType" name="userType">
+                            <option value="super">Super Admin</option>
+                            <option value="admin">Admin</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

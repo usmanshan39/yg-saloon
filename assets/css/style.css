@@ -639,6 +639,16 @@
 .blogs-sec1 .card-img, .card-img-top{
     height: 200px;
 }
+.blog-short-p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.blogs-sec1 .card-body{
+    min-height: 199px;
+}
 
 
 

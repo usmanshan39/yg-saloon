@@ -161,15 +161,24 @@
         $title = $_POST['title'];
         $description = $_POST['description'];
         $published = $_POST['blogStatus'];
+        $metaTitle = $_POST['metaTitle'];
+        $metaDesc = $_POST['metaDesc'];
         $targetDir = "../uploads/";
         $targetFile = $targetDir . basename($_FILES["image"]["name"]);
         move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile);
 
-        $sql = "INSERT INTO our_blogs (title, blog_image, blog_desc, published) VALUES (?, ?, ?, ?)";
+        // echo 'metaTitle '.$metaTitle.'<br>';
+        // echo 'metaDesc '.$metaDesc.'<br>';
+        // echo 'targetFile '.$targetFile.'<br>';
+
+
+        // die();
+
+        $sql = "INSERT INTO our_blogs (title, blog_image, blog_desc, published , meta_title , meta_desc) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bind_param("ssss", $title, $targetFile, $description, $published);
+        $stmt->bind_param("ssssss", $title, $targetFile, $description, $published , $metaTitle , $metaDesc);
 
         if ($stmt->execute()) {
             $data = array("status" => true, "message" => "Blog Created Successfully");
@@ -206,12 +215,14 @@
         $title = $_POST['title'];
         $published = $_POST['editBlogStatus'];
         $description = $_POST['description'];
+        $metaTitle = $_POST['metaTitle'];
+        $metaDesc = $_POST['metaDesc'];
 
-        $sql = "UPDATE our_blogs SET title = ?, blog_desc = ?, published = ? WHERE id = ?";
+        $sql = "UPDATE our_blogs SET title = ?, blog_desc = ?, published = ? , meta_title = ?, meta_desc = ? WHERE id = ?";
 
         $stmt = $conn->prepare($sql);
 
-        $stmt->bind_param("sssi", $title, $description, $published, $id);
+        $stmt->bind_param("sssssi", $title, $description, $published, $metaTitle, $metaDesc,  $id);
         if ($stmt->execute()) {
             $data = array("status" => true, "message" => "Successfully Update Appointment");
             echo json_encode($data);
