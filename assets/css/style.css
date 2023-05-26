@@ -342,6 +342,9 @@
     background-color: transparent !important;
     color: #ced4da;
 }
+.modal-content .book-form .cus-form-control{
+    color: gray !important;
+}
 
 .modal-content .btn-close{
     position: absolute;
