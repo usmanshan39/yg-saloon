@@ -70,7 +70,7 @@ if ($result) {
                           <a class="nav-link" href="./contact-us.html">Contact</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="./blogs.html">Blog</a>
+                          <a class="nav-link" href="./blogs.php">Blog</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">

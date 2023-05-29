@@ -250,6 +250,7 @@
 
 
 
+
 /* index-secret end */
 
 
@@ -475,6 +476,30 @@
     border-bottom-left-radius: 0;
 }
 
+
+.book-form input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 2px;
+    opacity: 0.6;
+    filter: invert(0.8);
+  }
+  
+.book-form input[type="date"]::-webkit-calendar-picker-indicator:hover {
+opacity: 1
+}
+.book-form input[type="time"]::-webkit-calendar-picker-indicator {
+cursor: pointer;
+border-radius: 4px;
+margin-right: 2px;
+opacity: 0.6;
+filter: invert(0.8);
+}
+
+.book-form input[type="time"]::-webkit-calendar-picker-indicator:hover {
+opacity: 1
+}
+
 /* index-benifit section end */
 
 
@@ -649,7 +674,6 @@
 .blogs-sec1 .card-body{
     min-height: 199px;
 }
-
 
 
 /* media queries */
