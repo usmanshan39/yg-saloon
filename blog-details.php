@@ -179,6 +179,9 @@ if ($result) {
 
   <!-- footer section end -->
 
+  <div class="whatsapp-bottom">
+    <a class="btn btn-whatsapp" href="https://wa.me/+971 522381623" target="_blank"><i class="fa fa-whatsapp"></i></a>
+  </div>
 
     <!-- Modal -->
     <div class="modal fade" id="appModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
