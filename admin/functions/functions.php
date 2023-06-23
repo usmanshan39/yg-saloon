@@ -115,8 +115,8 @@
 
                     $to = $email;
                     $subject = 'Yg Saloon Appointment Reminder';
-                    $headers = "From: info@ygsalon.ae\r\n";
-                    $headers .= "Reply-To: info@ygsalon.ae\r\n";
+                    $headers = "From: YnG@femininebeautybar.com\r\n";
+                    $headers .= "Reply-To: YnG@femininebeautybar.com\r\n";
                     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                     $body = "<h2>Hi ".$name."</h2>";
                     $body .= "<p>Your appointment for yg saloon is on data ".$row['app_date']." at time ".$row['app_time']."</p>";

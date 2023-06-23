@@ -158,15 +158,15 @@ if ($result) {
         <div class="border-right-2 col-md-6 col-lg-4 mt-4">
           <div class="p-3">
             <p class="text-white">Our Timings</p>
-            <p class="text-white mt-3">Mon-Fri: 9 AM – 9 PM</p>
-            <p class="text-white">Sat-Sun: 10 AM – 10 PM</p>
+            <p class="text-white mt-3">Mon-Fri: 8 AM to 11 PM </p>
+            <p class="text-white">Sat-Sun: 8 AM to 11 PM </p>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 mt-4">
           <div class="p-3">
             <p class="text-white">Get in touch with us</p>
-            <p class="text-white"><i class="fa fa-map-marker orange-color"></i> Prime Tower – Office # 3101, Dubai</p>
-            <p class="text-white"><i class="fa fa-envelope orange-color"></i> info@ygsalon.ae</p>
+            <p class="text-white"><i class="fa fa-map-marker orange-color"></i> Office #  3101, Prime Tower, 39, Marasi Drive Street, Business Bay, Dubai</p>
+            <p class="text-white"><i class="fa fa-envelope orange-color"></i> YnG@femininebeautybar.com</p>
             <p class="text-white"><i class="fa fa-phone orange-color"></i> +971 522381623 / 624 / 625</p>
           </div>
         </div>
@@ -180,7 +180,7 @@ if ($result) {
   <!-- footer section end -->
 
   <div class="whatsapp-bottom">
-    <a class="btn btn-whatsapp" href="https://wa.me/+971 522381623" target="_blank"><i class="fa fa-whatsapp"></i></a>
+    <a class="btn btn-whatsapp" href="https://wa.me/+971522381623 " target="_blank"><i class="fa fa-whatsapp"></i></a>
   </div>
 
     <!-- Modal -->
