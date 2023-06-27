@@ -467,6 +467,7 @@
 .index-benifit .input-btn .form-control{
     background-color: transparent;
     padding: 0.75rem 0.75rem;
+    color: #fff !important;
     border-top-right-radius:0;
     border-bottom-right-radius: 0;
 }

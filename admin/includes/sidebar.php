@@ -27,6 +27,11 @@
         <?php
     }
     ?>
+    <li class="nav-item">
+        <a class="nav-link" href="subscriber.php">
+            <i class="fas fa-users"></i>
+            <span>Subscriber</span></a>
+    </li>
     <!-- <li class="nav-item">
         <a class="nav-link" href="tables.php">
             <i class="fas fa-fw fa-table"></i>

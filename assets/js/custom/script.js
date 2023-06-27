@@ -31,6 +31,36 @@ $(document).ready(function () {
                 }
             }
         })
+    });
+    $(document).on("click" , '.email_subscribe_btn' , function(e){
+        e.preventDefault();
+        var inputValue = $(this).siblings('input').val();
+        if(!inputValue || inputValue ==''){
+            swalAlert('Success!', 'error', "Please Enter the valid email");
+        }else{
+            let data = {
+                email: inputValue,
+                action: 'addEmailSubscriber'
+            };
+            console.log("data" ,data);
+            $.ajax({
+                url: "admin/functions/addAppointment.php",
+                type: "POST",
+                data: data,
+                success: function (response) {
+                    let result = JSON.parse(response);
+                    if (result.status) {
+                        var inputElement = $(this).siblings('input');
+                        inputElement.val('');
+                        $(this).trigger('reset');
+                        $('#appModal').modal('hide');
+                        swalAlert('Success!', 'success', result.message);
+                    } else {
+                        swalAlert('Success!', 'error', result.message);
+                    }
+                }
+            })
+        }
     })
 
     $('.owl-carousel').owlCarousel({

@@ -18,6 +18,17 @@ if($action == "addAppointment"){
         $data = array("status"=> false , "data"=>"Failed To Created Appointment");
         echo json_encode($data);
     }
+}else if($action == "addEmailSubscriber"){
+    $email = $_POST['email'];
+    $sql = "INSERT INTO email_subscriber (email)VALUE('$email')";
+    $result = mysqli_query($conn , $sql);
+    if($result){
+        $data = array("status"=> true , "message"=>"Thanks for Subscribe Our Newsletter");
+        echo json_encode($data);
+    }else{
+        $data = array("status"=> false , "data"=>"Failed To Subscribe");
+        echo json_encode($data);
+    }
 }
 
 
