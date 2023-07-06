@@ -1,7 +1,13 @@
 $(document).ready(function () {
     var selectedAppForDelete = [];
+    var selectedBlogsForDelete = [];
+    var selectedUserForDelete = [];
+    var selectedSubForDelete = [];
+
 
     function loadAppointments() {
+        selectedAppForDelete=[];
+        $("#btn-bulk-app-delete").addClass('d-none');
         $.ajax({
             url: "functions/functions.php",
             type: "POST",
@@ -304,6 +310,8 @@ $(document).ready(function () {
 
 
     function loadBlogs() {
+        selectedBlogsForDelete=[];
+        $("#btn-bulk-blogs-delete").addClass('d-none');
         $.ajax({
             url: "functions/functions.php",
             type: "POST",
@@ -316,13 +324,14 @@ $(document).ready(function () {
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
                     let recordStatus;
+                    let checkboxId = 'checkbox_' + rowData.id;
                     if(rowData.published == 1){
                         recordStatus = '<span class="badge badge-success">Published</span>';
                     }else{
                         recordStatus = '<span class="badge badge-dark">Pending</span>';
                     }
                     let rowHtml = '<tr>' +
-                        '<td>' + (index+1) + '</td>' +
+                        '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index+1) + '</td>' +
                         '<td>' + rowData.title + '</td>' +
                         '<td> <img src="./uploads/'+rowData.blog_image+'" width="100px"> </td>' +
                         '<td>' + rowData.blog_desc + '</td>' +
@@ -334,6 +343,22 @@ $(document).ready(function () {
                         '</td>' +
                         '</tr>';
                     tableBody.append(rowHtml);
+                    $('#' + checkboxId).change(function () {
+                        if (this.checked) {
+                          selectedBlogsForDelete.push(rowData.id);
+                        } else {
+                          let index = selectedBlogsForDelete.indexOf(rowData.id);
+                          if (index > -1) {
+                            selectedBlogsForDelete.splice(index, 1);
+                          }
+                        }
+                        if(selectedBlogsForDelete.length>0){
+                            $("#btn-bulk-blogs-delete").removeClass('d-none');
+                        }else{
+                            $("#btn-bulk-blogs-delete").addClass('d-none');
+                        }
+                        console.log("selectedBlogsForDelete" , selectedBlogsForDelete);
+                      });
                 });
                 $('#blogsTable').DataTable();
             },
@@ -459,6 +484,38 @@ $(document).ready(function () {
             }
         });
     })
+    $(document).on('click' , '#btn-bulk-blogs-delete' , function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete all these Blogs?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let sendArr = selectedBlogsForDelete.map(el=> parseInt(el));
+                console.log("sendArr", sendArr);
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteMultipleBlogs" , ids : JSON.stringify(sendArr)},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadBlogs();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        })
+    })
 
     function swalAlert(title, icon, text) {
         Swal.fire({
@@ -473,6 +530,8 @@ $(document).ready(function () {
     // users section
 
     function loadUsers() {
+        selectedUserForDelete=[];
+        $("#btn-bulk-user-delete").addClass('d-none');
         $.ajax({
             url: "functions/functions.php",
             type: "POST",
@@ -485,6 +544,7 @@ $(document).ready(function () {
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
                     console.log("rowData" , rowData);
+                    let checkboxId = 'checkbox_' + rowData.id;
                     let userType;
                     if(rowData.user_type == 'super'){
                         userType = '<span class="badge badge-success">Super Admin</span>';
@@ -492,7 +552,7 @@ $(document).ready(function () {
                         userType = '<span class="badge badge-dark">Admin</span>';
                     }
                     let rowHtml = '<tr>' +
-                        '<td>' + (index+1) + '</td>' +
+                        '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index+1) + '</td>' +
                         '<td>' + rowData.user_name + '</td>' +
                         '<td>'+ rowData.user_email +'</td>' +
                         '<td>*****</td>' +
@@ -504,6 +564,22 @@ $(document).ready(function () {
                         '</td>' +
                         '</tr>';
                     tableBody.append(rowHtml);
+                    $('#' + checkboxId).change(function () {
+                        if (this.checked) {
+                          selectedUserForDelete.push(rowData.id);
+                        } else {
+                          let index = selectedUserForDelete.indexOf(rowData.id);
+                          if (index > -1) {
+                            selectedUserForDelete.splice(index, 1);
+                          }
+                        }
+                        if(selectedUserForDelete.length>0){
+                            $("#btn-bulk-user-delete").removeClass('d-none');
+                        }else{
+                            $("#btn-bulk-user-delete").addClass('d-none');
+                        }
+                        console.log("selectedUserForDelete" , selectedUserForDelete);
+                      });
                 });
                 $('#usersTable').DataTable();
             },
@@ -621,6 +697,39 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on('click' , '#btn-bulk-user-delete' , function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete all these Users?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let sendArr = selectedUserForDelete.map(el=> parseInt(el));
+                console.log("sendArr", sendArr);
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteMultipleUsers" , ids : JSON.stringify(sendArr)},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadUsers();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        })
+    })
+
 
     // login function
     $(document).on('submit', '#loginForm', function (e) {
@@ -647,6 +756,8 @@ $(document).ready(function () {
     
 
     function loadSubscribers() {
+        selectedSubForDelete=[];
+        $("#btn-bulk-subs-delete").addClass('d-none');
         $.ajax({
             url: "functions/functions.php",
             type: "POST",
@@ -659,6 +770,7 @@ $(document).ready(function () {
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
                     console.log("rowData" , rowData);
+                    let checkboxId = 'checkbox_' + rowData.id;
                     let userType;
                     if(rowData.user_type == 'super'){
                         userType = '<span class="badge badge-success">Super Admin</span>';
@@ -666,12 +778,28 @@ $(document).ready(function () {
                         userType = '<span class="badge badge-dark">Admin</span>';
                     }
                     let rowHtml = '<tr>' +
-                        '<td>' + (index+1) + '</td>' +
+                        '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index+1) + '</td>' +
                         '<td>'+ rowData.email +'</td>' +
                         '<td><button class="btn btn-outline-danger mx-2 btn-sm delete-subscriber-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
                         '</td>' +
                         '</tr>';
                     tableBody.append(rowHtml);
+                    $('#' + checkboxId).change(function () {
+                        if (this.checked) {
+                          selectedSubForDelete.push(rowData.id);
+                        } else {
+                          let index = selectedSubForDelete.indexOf(rowData.id);
+                          if (index > -1) {
+                            selectedSubForDelete.splice(index, 1);
+                          }
+                        }
+                        if(selectedSubForDelete.length>0){
+                            $("#btn-bulk-subs-delete").removeClass('d-none');
+                        }else{
+                            $("#btn-bulk-subs-delete").addClass('d-none');
+                        }
+                        console.log("selectedSubForDelete" , selectedSubForDelete);
+                      });
                 });
                 $('#subscriberTable').DataTable();
             },
@@ -712,6 +840,38 @@ $(document).ready(function () {
                 })
             }
         });
+    })
+    $(document).on('click' , '#btn-bulk-subs-delete' , function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete all these Subscribers?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let sendArr = selectedSubForDelete.map(el=> parseInt(el));
+                console.log("sendArr", sendArr);
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteMultipleSubs" , ids : JSON.stringify(sendArr)},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadSubscribers();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        })
     })
 
 });

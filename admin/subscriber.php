@@ -8,9 +8,10 @@
                     <h1 class="h3 mb-2 text-gray-800">Our Subscriber's</h1>
                     <p class="mb-4"></p>
                     <div class="card shadow mb-4">
-                        <!-- <div class="card-header py-3">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">ADD User</button>
-                        </div> -->
+                        <div class="card-header py-3">
+                            <button class="btn btn-danger float-right d-none" id="btn-bulk-subs-delete">Delete Selected</button>
+                            <!-- <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">ADD User</button> -->
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="subscriberTable" width="100%" cellspacing="0">

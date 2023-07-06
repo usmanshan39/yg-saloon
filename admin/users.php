@@ -10,6 +10,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">ADD User</button>
+                            <button class="btn btn-danger float-right d-none" id="btn-bulk-user-delete">Delete Selected</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
