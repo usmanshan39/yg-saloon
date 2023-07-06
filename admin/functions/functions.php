@@ -113,6 +113,25 @@
             echo json_encode($data);
         }
     }
+    else if($action == "deleteMultipleAppointment"){
+        $id = $_POST['ids'];
+        $array = json_decode($id, true);
+       
+        $allDeleted = true;
+        foreach ($array as $id) {
+            $id = $conn->real_escape_string($id);
+            $sql = "DELETE FROM appointments WHERE id = '$id'";
+            if ($conn->query($sql) !== TRUE) {
+              $allDeleted = false;
+              $data = array("status"=> false , "data"=>"Failed To Deleted the Appountments");
+              echo json_encode($data);
+            }
+          }
+          if ($allDeleted) {
+            $data = array("status"=> true , "message"=>"Appointments Deleted Successfully");
+            echo json_encode($data);
+          }
+    }
 
     else if($action == "sendEmail"){
         $id = $_POST['id'];

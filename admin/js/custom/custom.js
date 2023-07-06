@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var selectedAppForDelete = [];
+
     function loadAppointments() {
         $.ajax({
             url: "functions/functions.php",
@@ -11,6 +13,7 @@ $(document).ready(function () {
                 let tableBody = $('#appointmentTable tbody');
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
+                    let checkboxId = 'checkbox_' + rowData.id;
                     let recordStatus;
                     if(rowData.status == "Pending"){
                         recordStatus = '<span class="badge badge-dark">Pending</span>';
@@ -20,7 +23,7 @@ $(document).ready(function () {
                         recordStatus = '<span class="badge badge-success">Complete</span>';
                     }
                     let rowHtml = '<tr>' +
-                        '<td>' + (index+1)  + '</td>' +
+                        '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index+1)  + '</td>' +
                         '<td>' + rowData.name + '</td>' +
                         '<td>' + rowData.email + '</td>' +
                         '<td>' + rowData.mobile + '</td>' +
@@ -37,6 +40,22 @@ $(document).ready(function () {
                         '</td>' +
                         '</tr>';
                     tableBody.append(rowHtml);
+                    $('#' + checkboxId).change(function () {
+                        if (this.checked) {
+                          selectedAppForDelete.push(rowData.id);
+                        } else {
+                          let index = selectedAppForDelete.indexOf(rowData.id);
+                          if (index > -1) {
+                            selectedAppForDelete.splice(index, 1);
+                          }
+                        }
+                        if(selectedAppForDelete.length>0){
+                            $("#btn-bulk-app-delete").removeClass('d-none');
+                        }else{
+                            $("#btn-bulk-app-delete").addClass('d-none');
+                        }
+                        console.log("selectedAppForDelete" , selectedAppForDelete);
+                      });
                 });
                 $('#appointmentTable').DataTable();
             },
@@ -212,6 +231,39 @@ $(document).ready(function () {
                 })
             }
         });
+    })
+
+    $(document).on('click' , '#btn-bulk-app-delete' , function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: 'Confirm',
+            text: 'Are you sure you want to Delete all these appointment?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let sendArr = selectedAppForDelete.map(el=> parseInt(el));
+                console.log("sendArr", sendArr);
+                $.ajax({
+                    url: "functions/functions.php",
+                    type: "POST",
+                    data: {action : "deleteMultipleAppointment" , ids : JSON.stringify(sendArr)},
+                    success: function (response) {
+                        let result = JSON.parse(response);
+                        if (result.status) {
+                            swalAlert('Success!', 'success', result.message);
+                            loadAppointments();
+                        } else {
+                            swalAlert('Success!', 'error', result.message);
+                        }
+                    }
+                })
+            }
+        })
     })
 
     $(document).on('click', '.send-email-btn', function (e) {
