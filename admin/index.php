@@ -11,6 +11,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#addAppointmentModal">ADD Appointment</button>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#addFilterModal">Apply Filter</button>
                             <button class="btn btn-danger float-right d-none" id="btn-bulk-app-delete">Delete Selected</button>
                         </div>
                         <div class="card-body">

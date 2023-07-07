@@ -3,6 +3,9 @@ $(document).ready(function () {
     var selectedBlogsForDelete = [];
     var selectedUserForDelete = [];
     var selectedSubForDelete = [];
+    var allAppointmentsData;
+    var filteredAppointmentsData;
+
 
 
     function loadAppointments() {
@@ -16,54 +19,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 let tableData = JSON.parse(response);
-                let tableBody = $('#appointmentTable tbody');
-                tableBody.empty();
-                $.each(tableData, function (index, rowData) {
-                    let checkboxId = 'checkbox_' + rowData.id;
-                    let recordStatus;
-                    if(rowData.status == "Pending"){
-                        recordStatus = '<span class="badge badge-dark">Pending</span>';
-                    }else if(rowData.status == "Cancel"){
-                        recordStatus = '<span class="badge badge-danger">Cancel</span>';
-                    }else if(rowData.status == "Complete"){
-                        recordStatus = '<span class="badge badge-success">Complete</span>';
-                    }
-                    let rowHtml = '<tr>' +
-                        '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index+1)  + '</td>' +
-                        '<td>' + rowData.name + '</td>' +
-                        '<td>' + rowData.email + '</td>' +
-                        '<td>' + rowData.mobile + '</td>' +
-                        '<td>' + rowData.app_date + '</td>' +
-                        '<td>' + rowData.app_time + '</td>' +
-                        '<td>' + recordStatus + '</td>' +
-                        '<td> <button class="m-1 btn btn-outline-success btn-sm complete-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-check"></i></button>' +
-                        '<button class="m-1 btn btn-outline-warning btn-sm cancel-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-times"></i></button>' +
-                        '<button class="m-1 btn btn-outline-primary btn-sm edit-appointment-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editAppointmentModal">' +
-                        '<i class="fa fa-edit"></i>' +
-                        '</button>' +
-                        '<button class="m-1 btn btn-outline-dark btn-sm send-email-btn" data-record-id="' + rowData.id + '"><i class="fa fa-envelope"></i></button>'+
-                        '<button class="m-1 btn btn-outline-danger btn-sm delete-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>'+
-                        '</td>' +
-                        '</tr>';
-                    tableBody.append(rowHtml);
-                    $('#' + checkboxId).change(function () {
-                        if (this.checked) {
-                          selectedAppForDelete.push(rowData.id);
-                        } else {
-                          let index = selectedAppForDelete.indexOf(rowData.id);
-                          if (index > -1) {
-                            selectedAppForDelete.splice(index, 1);
-                          }
-                        }
-                        if(selectedAppForDelete.length>0){
-                            $("#btn-bulk-app-delete").removeClass('d-none');
-                        }else{
-                            $("#btn-bulk-app-delete").addClass('d-none');
-                        }
-                        console.log("selectedAppForDelete" , selectedAppForDelete);
-                      });
-                });
-                $('#appointmentTable').DataTable();
+                allAppointmentsData = JSON.parse(response);
+                loadAppointmentsTable(allAppointmentsData);
             },
             error: function (data, status, error) {
                 console.log("Fetch Appointments error ", data);
@@ -71,6 +28,56 @@ $(document).ready(function () {
         });
     }
     loadAppointments();
+    function loadAppointmentsTable(tableData) {
+        let tableBody = $('#appointmentTable tbody');
+        tableBody.empty();
+        $.each(tableData, function (index, rowData) {
+            let checkboxId = 'checkbox_' + rowData.id;
+            let recordStatus;
+            if (rowData.status == "Pending") {
+                recordStatus = '<span class="badge badge-dark">Pending</span>';
+            } else if (rowData.status == "Cancel") {
+                recordStatus = '<span class="badge badge-danger">Cancel</span>';
+            } else if (rowData.status == "Complete") {
+                recordStatus = '<span class="badge badge-success">Complete</span>';
+            }
+            let rowHtml = '<tr>' +
+                '<td><input type="checkbox" id="' + checkboxId + '"> ' + (index + 1) + '</td>' +
+                '<td>' + rowData.name + '</td>' +
+                '<td>' + rowData.email + '</td>' +
+                '<td>' + rowData.mobile + '</td>' +
+                '<td>' + rowData.app_date + '</td>' +
+                '<td>' + rowData.app_time + '</td>' +
+                '<td>' + recordStatus + '</td>' +
+                '<td> <button class="m-1 btn btn-outline-success btn-sm complete-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-check"></i></button>' +
+                '<button class="m-1 btn btn-outline-warning btn-sm cancel-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-times"></i></button>' +
+                '<button class="m-1 btn btn-outline-primary btn-sm edit-appointment-btn" data-record-id="' + rowData.id + '" data-toggle="modal" data-target="#editAppointmentModal">' +
+                '<i class="fa fa-edit"></i>' +
+                '</button>' +
+                '<button class="m-1 btn btn-outline-dark btn-sm send-email-btn" data-record-id="' + rowData.id + '"><i class="fa fa-envelope"></i></button>' +
+                '<button class="m-1 btn btn-outline-danger btn-sm delete-appointment-btn" data-record-id="' + rowData.id + '"><i class="fa fa-trash"></i></button>' +
+                '</td>' +
+                '</tr>';
+            tableBody.append(rowHtml);
+            $('#' + checkboxId).change(function () {
+                if (this.checked) {
+                    selectedAppForDelete.push(rowData.id);
+                } else {
+                    let index = selectedAppForDelete.indexOf(rowData.id);
+                    if (index > -1) {
+                        selectedAppForDelete.splice(index, 1);
+                    }
+                }
+                if (selectedAppForDelete.length > 0) {
+                    $("#btn-bulk-app-delete").removeClass('d-none');
+                } else {
+                    $("#btn-bulk-app-delete").addClass('d-none');
+                }
+                console.log("selectedAppForDelete", selectedAppForDelete);
+            });
+        });
+        $('#appointmentTable').DataTable();
+    }
 
     $(document).on('submit', '#addAppointmentForm', function (e) {
         e.preventDefault();
@@ -237,6 +244,54 @@ $(document).ready(function () {
                 })
             }
         });
+    })
+
+    // appointments filers
+    $(document).on('click' , '#filterAStautsBtn' , function(e){
+        e.preventDefault();
+        var filterStatusValue = $('#filterStatus').val();
+        if(!filterStatusValue || filterStatusValue == ''){
+            swalAlert('Error!', 'error', "Please Enter Valid Status");
+        }else{
+            filteredAppointmentsData = allAppointmentsData.filter(el => filterStatusValue.toLowerCase() === el.status.toLowerCase());
+            loadAppointmentsTable(filteredAppointmentsData);
+            if(filteredAppointmentsData.length = 0){
+                filteredAppointmentsData = allAppointmentsData;
+            }
+        }
+    })
+    $(document).on('click' , '#filterADatebtn' , function(e){
+        e.preventDefault();
+        var filterStatusValue = $('#filterDate').val();
+        if(!filterStatusValue || filterStatusValue == ''){
+            swalAlert('Error!', 'error', "Please Enter Valid Status");
+        }else{
+            filteredAppointmentsData = allAppointmentsData.filter(el => filterStatusValue === el.app_date);
+            loadAppointmentsTable(filteredAppointmentsData);
+            if(filteredAppointmentsData.length = 0){
+                filteredAppointmentsData = allAppointmentsData;
+            }
+        }
+    })
+    $(document).on('click' , '#filterATimebtn' , function(e){
+        e.preventDefault();
+        var filterStatusValue = $('#filterTime').val();
+        if(!filterStatusValue || filterStatusValue == ''){
+            swalAlert('Error!', 'error', "Please Enter Valid Status");
+        }else{
+            filteredAppointmentsData = allAppointmentsData.filter(el => filterStatusValue === el.app_time);
+            loadAppointmentsTable(filteredAppointmentsData);
+            if(filteredAppointmentsData.length = 0){
+                filteredAppointmentsData = allAppointmentsData;
+            }
+        }
+    })
+    $(document).on('click' , '#filterResetBtn' , function(e){
+        e.preventDefault();
+        $('#filterStatus').val('');
+        $('#filterDate').val('');
+        $('#filterTime').val('');
+        loadAppointmentsTable(allAppointmentsData);
     })
 
     $(document).on('click' , '#btn-bulk-app-delete' , function(e){
@@ -543,7 +598,7 @@ $(document).ready(function () {
                 let tableBody = $('#usersTable tbody');
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
-                    console.log("rowData" , rowData);
+                    
                     let checkboxId = 'checkbox_' + rowData.id;
                     let userType;
                     if(rowData.user_type == 'super'){
@@ -578,7 +633,6 @@ $(document).ready(function () {
                         }else{
                             $("#btn-bulk-user-delete").addClass('d-none');
                         }
-                        console.log("selectedUserForDelete" , selectedUserForDelete);
                       });
                 });
                 $('#usersTable').DataTable();
@@ -744,7 +798,6 @@ $(document).ready(function () {
             contentType: false,
             success: function (response) {
                 let result = JSON.parse(response);
-                console.log("result " , result);
                 if (result.status) {
                     window.location.href = './index.php';
                 } else {
@@ -769,7 +822,6 @@ $(document).ready(function () {
                 let tableBody = $('#subscriberTable tbody');
                 tableBody.empty();
                 $.each(tableData, function (index, rowData) {
-                    console.log("rowData" , rowData);
                     let checkboxId = 'checkbox_' + rowData.id;
                     let userType;
                     if(rowData.user_type == 'super'){
@@ -798,7 +850,6 @@ $(document).ready(function () {
                         }else{
                             $("#btn-bulk-subs-delete").addClass('d-none');
                         }
-                        console.log("selectedSubForDelete" , selectedSubForDelete);
                       });
                 });
                 $('#subscriberTable').DataTable();
@@ -855,7 +906,6 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.isConfirmed) {
                 let sendArr = selectedSubForDelete.map(el=> parseInt(el));
-                console.log("sendArr", sendArr);
                 $.ajax({
                     url: "functions/functions.php",
                     type: "POST",

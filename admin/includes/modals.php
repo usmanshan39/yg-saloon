@@ -114,8 +114,7 @@
                     </div>
                     <div class="form-group">
                         <label for="metaDesc">metaDesc:</label>
-                        <textarea name="metaDesc" class="form-control" rows="4" cols="50"
-                            required></textarea>
+                        <textarea name="metaDesc" class="form-control" rows="4" cols="50" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -251,6 +250,60 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary" id="updateBtn">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="addFilterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <form id="editUserForm" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Apply Filters</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <div class="row">
+                        <div class="col-8">
+                            <div class="form-group d-flex align-items-center">
+                                <label for="filterStatus" class="m-0 pr-2">Status:</label>
+                                <input type="text" id="filterStatus" placeholder="e.g: Pending" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                        <button type="submit" class="btn btn-info" id="filterAStautsBtn" data-dismiss="modal" aria-label="Close">Apply</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group d-flex align-items-center">
+                                <label for="filterDate" class="m-0 pr-2">Date:</label>
+                                <input type="date" id="filterDate" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                        <button type="submit" class="btn btn-info" id="filterADatebtn" data-dismiss="modal" aria-label="Close">Apply</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="form-group d-flex align-items-center">
+                                <label for="filterTime" class="m-0 pr-2">Time:</label>
+                                <input type="time" id="filterTime" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                        <button type="submit" class="btn btn-info" id="filterATimebtn" data-dismiss="modal" aria-label="Close">Apply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close" id=filterResetBtn>Reset</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
